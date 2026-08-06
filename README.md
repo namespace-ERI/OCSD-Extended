@@ -1,7 +1,7 @@
 # Agentic Reinforcement Learning with Observation-Calibrated Self-Distillation
 
 <p align="center">
-  <img src="fig/fig_token_diagnosis_v16.png" alt="OCSD" width="100%">
+  <img src="fig/methodology_v6.png" alt="OCSD" width="100%">
 </p>
 
 ## Requirements
