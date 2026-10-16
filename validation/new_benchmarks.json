@@ -119,6 +119,18 @@
     "agent_system/environments/new_benchmarks/manager.py": "d30b424f8684b1b8292b5b2158cfd3e464d618d5b50cc8123f71d38837833f58",
     "scripts/new_benchmarks/smoke_ray.py": "8800910a6c5002ccec56bf43dfaf57253837af1314bd9765d484acdec2abcf76",
     "scripts/new_benchmarks/smoke_pipeline.py": "3f3bafc23ce5bf4ec2528761d8377f2b88a8bd75fd50746091586be1ff1db0c6",
-    "scripts/new_benchmarks/train.py": "d1bb0eee17b36e7393d87d43803f792acfd7b04d1c5ea2e04d154bc4c7e4f36e"
-  }
+    "scripts/new_benchmarks/train.py": "5b037c7e08864788b6b62265a68c9a3749aaae186198725fba54b513681e24b2"
+  },
+  "ppo_budget": {
+    "tasks_per_update": 128,
+    "rollouts_per_task": 1,
+    "updates": 150,
+    "upstream_grouping_retained": true
+  },
+  "gspo_budget": {
+    "updates": 150,
+    "upstream_alfworld_example_epochs": 200,
+    "normalized_episode_budget": true
+  },
+  "counts_and_matching_audit": "counts_and_matching.json"
 }

@@ -81,7 +81,9 @@ class Integration(unittest.TestCase):
                 argv = train.command(a)
                 with initialize_config_dir(config_dir=str(ROOT / 'verl/trainer/config'), version_base=None):
                     cfg = compose(config_name='ppo_trainer', overrides=argv[3:])
-                self.assertEqual(cfg.env.rollout.n, 8)
+                self.assertEqual(cfg.env.rollout.n, 1 if method == 'ppo' else 8)
+                self.assertEqual(cfg.data.train_batch_size, 128 if method == 'ppo' else 16)
+                self.assertEqual(cfg.data.train_batch_size * cfg.env.rollout.n, 128)
                 self.assertEqual(cfg.trainer.total_training_steps, 150)
                 self.assertEqual(cfg.env.max_steps, 30)
                 self.assertFalse(cfg.data.apply_chat_template_kwargs.enable_thinking)

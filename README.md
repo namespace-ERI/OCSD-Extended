@@ -68,7 +68,9 @@ skill construction. This128-pair dev split is our extension protocol, not an
 official ScienceWorld dev set. It covers all29 L0 families. Train/dev/test
 membership is checked for overlap; no dev/test trajectory enters the skill bank.
 
-The default budget follows upstream ALFWorld/WebShop scripts:
+The main OCSD/GRPO-family default budget follows the upstream ALFWorld/WebShop
+scripts. This table is not a claim that every upstream algorithm has identical
+hyperparameters:
 
 | Setting | Upstream ALFWorld | Upstream WebShop | Upstream Search-QA | New environments |
 |---|---:|---:|---:|---:|
@@ -84,11 +86,29 @@ and only4 interaction steps, so its batch size is not copied here. MiniHack
 has2,400 task draws across1,000 seeds; ScienceWorld has2,400 draws across3,194
 pairs. Neither setting promises every training task will appear in one run.
 
+Two upstream exceptions need explicit treatment:
+
+* **PPO:** the original ALFWorld/WebShop scripts use128 independent tasks and
+  one rollout each, rather than16 tasks repeated8 times. The new PPO launchers
+  retain **128 × 1 × 150**, also19,200 episodes. PPO therefore has more task
+  draws than the grouped algorithms, matching the upstream comparison design.
+* **GSPO:** the original ALFWorld example runs200 epochs. The new-environment
+  default deliberately caps GSPO at150 updates to match the other methods'
+  episode budget; this is our budget normalization, not an exact reproduction
+  of that200-epoch setting. Its loss and clipping remain unchanged.
+
+Pool sizes are separate choices from update batch sizes. MiniHack's1,000
+training seeds follow the requested extraction pool;128 dev follows the old
+validation-batch scale, and500 test is an extension choice following the scale
+of our prior full WebShop evaluation. The128/500 split is not claimed to be
+an official MiniHack benchmark split. ScienceWorld's3,322/1,661 source pools
+come from the BEACON L0 protocol, with the documented128-train-instance holdout.
+
 Importantly, `trainer.total_training_steps=150` is explicit. The old16-row
 placeholder parquet made150 epochs equal150 updates; using the full task pool
 with only an epoch limit would accidentally multiply the budget. The new
 parquets contain one real identity per task, with shuffled training batches;
-each identity is repeated8 times for grouped rollout. Validation uses one
+each identity is repeated8 times for grouped rollout (once for PPO). Validation uses one
 rollout per identity and a fixed dev set; final test uses the full test parquet,
 including the final partial batch. Training defaults reject selecting test as
 the periodic evaluation split.
@@ -106,7 +126,8 @@ DAPO and dynamic GiGPO retain their upstream group filtering (up to10 sampling
 attempts) and asymmetric clipping0.2/0.28. They can generate additional discarded
 episodes; report that extra sampling cost rather than treating19,200 as their
 total generated episode count. GSPO keeps0.0003/0.0004 clipping. PPO uses a
-value-head critic initialized from the same backbone, with critic LR1e-5.
+value-head critic initialized from the same backbone, with critic LR1e-5 and
+128 independent tasks per update.
 
 ### Frozen skills and matching
 
@@ -123,6 +144,12 @@ Strategies were generated using SkillRL-style extraction with
 strategy sections are present; ScienceWorld exports only the3,194 non-dev
 strategies. The two outstanding optional refined-trajectory sections are not
 needed by these fixed-bank baselines and are not used to invent missing evidence.
+
+The compiled prompt banks contain21 positive workflow entries for MiniHack
+(15 broad +6 navigation) and77 for ScienceWorld (15 broad +62 across12
+nonempty categories). All29 ScienceWorld categories have explicit mapping
+entries, including the17 without successful evidence. These workflow counts
+are distinct from the1,000/3,194 source-strategy counts.
 
 This release uses **deterministic extractive compilation**, not an additional
 LLM semantic synthesis: concise, supported and diverse existing workflow
@@ -208,6 +235,15 @@ slots and a scripted policy to exercise the real rollout collector,0/1/2-step
 future evidence, and teacher batching with unchanged response tokens. It
 checks skill prefixes survive the configured prompt budget; it does not
 perform a model forward pass or optimizer step.
+
+[The quantity and matching audit](validation/counts_and_matching.json) also
+checks the generated parquets, zero split overlap, and every ScienceWorld
+category against the native simulator's task-name list:
+
+```bash
+PYTHONPATH=. python scripts/new_benchmarks/audit_counts.py \
+  --native --prepared data/prepared --output /path/to/counts-audit.json
+```
 
 ```bash
 python -m unittest discover -s tests/new_benchmarks -v

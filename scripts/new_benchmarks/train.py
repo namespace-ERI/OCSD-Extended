@@ -106,7 +106,8 @@ def command(args):
     elif args.method == 'ppo':
         common.update({'algorithm.adv_estimator': 'gae', 'critic.model.path': args.model,
                        'critic.optim.lr': 1e-5, 'critic.model.use_remove_padding': True,
-                       'critic.ppo_micro_batch_size_per_gpu': 4})
+                       'critic.ppo_micro_batch_size_per_gpu': 4,
+                       'data.train_batch_size': 128, 'env.rollout.n': 1})
     if args.method in {'dapo', 'gigpo_dynamic'}:
         common.update({'algorithm.filter_groups.enable': True,
                        'algorithm.filter_groups.max_num_gen_batches': 10,
