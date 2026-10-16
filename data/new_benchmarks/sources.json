@@ -1,0 +1,61 @@
+{
+  "benchmark_sources": {
+    "adapter_source": "https://anonymous.4open.science/r/CompeteRLICLR27-CC5F",
+    "snapshot_retrieved": "2026-10-15",
+    "scienceworld_l0_source": "https://github.com/ZJU-REAL/BEACON/tree/c88af45736b0a178106bc14ea89603ff02d8b222/agent_system/environments/env_package/sciworld/variations_idx",
+    "native_versions": {
+      "scienceworld": "1.2.3",
+      "minihack": "1.0.2",
+      "nle": "1.3.0"
+    },
+    "runtime_python": "3.12",
+    "runtime_java": "17",
+    "nle_wheel_platform": "Linux x86_64 CPython3.12; other platforms require another artifact"
+  },
+  "validated_distribution_downloads": [
+    {
+      "filename": "scienceworld-1.2.3-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a8/2a/a95edc8f02830543d782aee506eaacf1344f918fb40fa475fe5898293f8c/scienceworld-1.2.3-py3-none-any.whl",
+      "bytes": 7284687,
+      "sha256": "e9737b9d099bfaad90ef053ad6ac1d795e2063ed320efdfc0e9d9c8b5bebf419",
+      "sha256_verified_against_pypi": true
+    },
+    {
+      "filename": "minihack-1.0.2.tar.gz",
+      "url": "https://files.pythonhosted.org/packages/96/30/e080baba3366a5ef109c0cb9f17a631b474cea6f3818a27aecf453ec87b2/minihack-1.0.2.tar.gz",
+      "bytes": 249259,
+      "sha256": "dd219af762f2adc859f523edf7b5a22a90015c2f561f68a9a4f8268d76afcd44",
+      "sha256_verified_against_pypi": true
+    },
+    {
+      "filename": "nle-1.3.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "url": "https://files.pythonhosted.org/packages/ff/18/e5a88a724297854510ea8df7d9e0de773b2cac78483bf2b922714fdb6bfb/nle-1.3.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "bytes": 3270017,
+      "sha256": "a61797c4f37876c71b75dfd1462bbcdc5aba6dfd8f8357dce15e8a38a09430d1",
+      "sha256_verified_against_pypi": true
+    },
+    {
+      "filename": "py4j-0.10.9.9-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/bd/db/ea0203e495be491c85af87b66e37acfd3bf756fd985f87e46fc5e3bf022c/py4j-0.10.9.9-py2.py3-none-any.whl",
+      "bytes": 203008,
+      "sha256": "c7c26e4158defb37b0bb124933163641a2ff6e3a3913f7811b0ddbe07ed61533",
+      "sha256_verified_against_pypi": true
+    }
+  ],
+  "model": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "url": "https://huggingface.co/Qwen/Qwen3-4B",
+    "included_in_git": false,
+    "note": "Use the same local initial checkpoint for comparisons; record its revision/hash with results."
+  },
+  "data_contract": {
+    "training_is_online_interaction": true,
+    "training_and_test_identities_in_git": true,
+    "prepared_parquets_in_git": true,
+    "frozen_skills_in_git": true,
+    "raw_rollout_chats_in_git": false,
+    "raw_rollout_chats_public_download": null,
+    "raw_rollout_chats_required_for_training": false,
+    "strategy_evidence_in_git": true
+  }
+}

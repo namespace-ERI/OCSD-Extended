@@ -40,11 +40,92 @@ For many ScienceWorld workers, bound Java resources, for example:
 export JAVA_TOOL_OPTIONS='-Xmx512m -XX:ActiveProcessorCount=1 -XX:+UseSerialGC'
 ```
 
+### Included data and external downloads
+
+**Both new skill libraries and all training/evaluation task inputs are committed
+to this public repository.** No private shared-storage path or extraction API
+is needed to use them. A regular clone downloads them without Git LFS:
+
+```bash
+git clone https://github.com/namespace-ERI/OCSD-Extended.git
+cd OCSD-Extended
+python scripts/new_benchmarks/verify_release.py
+```
+
+| Included in Git | Size | Purpose |
+|---|---:|---|
+| [skills/minihack_room](skills/minihack_room) | 1.29 MiB | Frozen Markdown/JSON prompt bank and all1,000 source strategy records |
+| [skills/scienceworld](skills/scienceworld) | 5.36 MiB | Frozen prompt bank and all3,194 non-dev source strategy records |
+| [data/new_benchmarks](data/new_benchmarks) | About200 KiB of task manifests, plus release metadata | Exact seeds, task/variation pairs, dev holdout and fixed test selection |
+| [data/prepared](data/prepared) | 78.4 KiB total,7 parquets | Training, dev and test inputs; also ScienceWorld `test_full` |
+
+These are **online interactive RL benchmarks**, not static question/answer or
+offline trajectory datasets. MiniHack creates a level from each seed;
+ScienceWorld loads the named task/variation in its simulator. The parquets
+already contain every selected task identity. Goals and observations arrive
+from the simulator at reset. The original Qwen rollout chats, model weights
+and native simulator binaries are not bundled in Git. Raw rollout chats have
+no public download URL in this release and are not required for RL training
+or using the frozen banks. The published `evidence.jsonl` files contain the
+extracted strategies, source identities and hashes, not the original chats.
+
+Install/download simulator assets from these official package releases:
+
+| External asset | Official download | Installed content |
+|---|---|---|
+| ScienceWorld1.2.3 | [PyPI release](https://pypi.org/project/scienceworld/1.2.3/) | Python interface and bundled simulator JAR; Java17 required by this setup |
+| MiniHack1.0.2 | [PyPI release](https://pypi.org/project/minihack/1.0.2/) | Task generator and level definitions |
+| NLE1.3.0 | [PyPI release](https://pypi.org/project/nle/1.3.0/) | Native NetHack engine; use the appropriate Linux/Python wheel |
+| Qwen3-4B | [Official model](https://huggingface.co/Qwen/Qwen3-4B) | Initial model/tokenizer, downloaded separately |
+
+The installation commands above fetch the simulator packages; no separate
+large benchmark corpus download is needed. [sources.json](data/new_benchmarks/sources.json)
+records the benchmark sources, pinned package URLs and SHA256 hashes of the
+distributions used for validation. Its NLE wheel is specifically Linux x86_64,
+CPython3.12; another platform needs its own matching distribution.
+
+For an offline GPU node, build a wheel bundle on an internet-connected Linux
+machine with the same Python/platform and an existing compatible OCSD
+environment, then copy `downloads/new-benchmarks` to the training machine:
+
+```bash
+python -m pip wheel --wheel-dir downloads/new-benchmarks \
+  -r requirements-new-benchmarks.txt
+python -m pip wheel --no-deps --wheel-dir downloads/new-benchmarks \
+  -r requirements-minihack-no-deps.txt
+
+# On the training machine, after installing the original OCSD environment:
+python -m pip install --no-index --find-links downloads/new-benchmarks \
+  -r requirements-new-benchmarks.txt
+python -m pip install --no-index --find-links downloads/new-benchmarks \
+  --no-deps -r requirements-minihack-no-deps.txt
+```
+
+Download model weights once on the connected machine, then use the resulting
+local directory as `MODEL_PATH` on every training node:
+
+```bash
+export HF_HOME="$PWD/downloads/huggingface-cache"
+python - <<'PY'
+from huggingface_hub import snapshot_download
+snapshot_download(repo_id="Qwen/Qwen3-4B", local_dir="models/Qwen3-4B")
+PY
+export MODEL_PATH="$PWD/models/Qwen3-4B"
+```
+
+The release checksum checker uses only Python's standard library. Run it on
+the original checkout before optional parquet regeneration; different PyArrow
+versions can produce different parquet bytes for identical task identities.
+After regeneration, use `audit_counts.py --prepared data/prepared` to check
+identity equality instead. The release manifest covers the two new banks and
+their data inputs; the original three benchmarks retain their own setup below.
+
 ### Data, splits, and training budget
 
-Checked-in JSON manifests specify actual task identities. Preparation is offline
-and does not download the unrelated Geometry3k placeholder dataset used by the
-old preparation script:
+Checked-in JSON manifests specify actual task identities, and the corresponding
+parquets are already included. Optional regeneration is offline and does not
+download the unrelated Geometry3k placeholder dataset used by the old preparation
+script:
 
 ```bash
 python scripts/new_benchmarks/prepare_data.py
@@ -206,6 +287,23 @@ nonempty categories). All29 ScienceWorld categories have explicit mapping
 entries, including the17 without successful evidence. These workflow counts
 are distinct from the1,000/3,194 source-strategy counts.
 
+The default is `skill_all=false`. The training process caches the library once, then
+each skill-based teacher prompt receives **all15 general entries plus the
+current native category's entries**. MiniHack therefore supplies21 entries;
+ScienceWorld supplies15–21 (15 for each of the17 categories without successful
+specific evidence). Its62 specific entries are the total across the library,
+not62 entries per task. There is no model-based retrieval or top-k selection
+in this path. Setting the method's `skill_all=true` override explicitly changes
+this to the whole bank,21/77 entries, and is not the comparison default.
+
+The15/6 compilation budget follows WebShop's bank scale. Original ALFWorld has
+12 general plus5/6/10 per matched category, WebShop15 plus5/6, and Search10
+plus5. These are bank sizes, not a guarantee of identical prompt token counts.
+The legacy teacher routing can send `data_source=text` through the Search
+lookup before keyword matching and return only general skills for original
+ALFWorld/WebShop inputs. The new environments explicitly prioritize native
+`task_type`; this extension does not alter that legacy routing behavior.
+
 This release uses **deterministic extractive compilation**, not an additional
 LLM semantic synthesis: concise, supported and diverse existing workflow
 strings are selected verbatim, retaining their evidence IDs and applicability.
@@ -257,9 +355,57 @@ python scripts/new_benchmarks/train.py --env scienceworld --method rlsd --dry-ru
 ```
 
 Both new environments have wrappers under each original method directory.
-Method defaults follow the corresponding upstream scripts: OCSD beta0.5,
-K_future2 and top-step ratio0.2; SDAR coefficient0.01/gate5; GRPO+OPSD gate0;
-OPSD disables the PG term; RLSD lambda0.5/clip0.2; SkillSD lambda0.001.
+The following are the **actual extension launcher defaults**, distinct from
+the CompeteRL paper settings in the reference table above. See
+[train.py](scripts/new_benchmarks/train.py) for the complete arguments.
+
+| Shared launcher parameter | Default |
+|---|---|
+| GPU allocation / rollout tensor parallelism | One node,8 GPUs / TP2 |
+| Optimizer updates | 150, explicitly capped by `trainer.total_training_steps` |
+| Task batch / rollouts per task | 16 /8; PPO128 /1 |
+| Actor learning rate | `1e-6` |
+| PPO mini-batch / actor micro-batch per GPU | 64 /8 for both new environments |
+| Actor KL | Enabled, `low_var_kl`, coefficient0.01; no KL term added to reward |
+| Training temperature / top-p | 1 /1 |
+| Dev / final-test temperature | 0.4 sampled /0 greedy |
+| Qwen3 thinking | `enable_thinking=false`; explicit `<reason>` action reasoning |
+| Environment horizon / history | 30 interactions /2 recent observation-action pairs |
+| Prompt / response limits | MiniHack12,288 /2,048; ScienceWorld15,000 /512 |
+| vLLM model length / token batch cap | 16,384 /16,384 |
+| vLLM GPU memory utilization | 0.6 |
+| Model memory options | Gradient checkpointing and remove-padding enabled; actor parameter/optimizer offload disabled; reference parameter offload enabled |
+| Invalid action penalty | Enabled, coefficient0.1, applied by the trainer in addition to native task reward |
+| Seed | 0 for data shuffle, rollout and environment; `--seed` overrides these, not the fixed test identities |
+| Ray CPU reservation per environment worker | 0.1 logical CPU; each ScienceWorld slot also starts a JVM, so provision physical CPU/RAM accordingly |
+
+| Method | Method-specific defaults |
+|---|---|
+| `oc_opsd` | beta0.5, epsilon`1e-6`, K_future2, top-step ratio0.2; future observations, no skill bank |
+| `opsd` | SDAR coefficient0.01, gate5, PG loss coefficient0 |
+| `grpo_opsd` | SDAR coefficient0.01, gate0 |
+| `sdar` | SDAR coefficient0.01, gate5 |
+| `rlsd` | lambda0.5, clip0.2, warmdown disabled (`-1`) |
+| `skillsd` | SDL lambda0.001, warmdown disabled (`-1`) |
+| `skill_grpo` | Category-matched skills in acting prompts; upstream with/without-skills validation |
+| `grpo` / `rloo` | Corresponding upstream advantage estimator |
+| `gigpo` | Step advantage weight1, `mean_std_norm` mode |
+| `gigpo_dynamic` | Same GiGPO settings; group filtering, up to10 sampling attempts, clipping0.2/0.28 |
+| `dapo` | GRPO advantage; group filtering, up to10 sampling attempts, clipping0.2/0.28 |
+| `gspo` | GSPO loss, clipping0.0003/0.0004 |
+| `ppo` | GAE and value-head critic; critic LR`1e-5`, critic micro-batch/GPU4;128 independent tasks |
+
+The skill-using methods above default to `skill_all=false`. JSON common
+mistakes are auxiliary data; the Markdown teacher path consumes general and
+category workflow entries. `--dry-run` prints every final Hydra override and
+does not allocate GPUs. Additional overrides follow `--`, for example:
+
+```bash
+python scripts/new_benchmarks/train.py --env scienceworld --method opsd \
+  --model "$MODEL_PATH" --seed 42 --dry-run -- \
+  actor_rollout_ref.rollout.gpu_memory_utilization=0.7
+```
+
 Checkpoint retention keeps the latest checkpoint, saves every30 updates, and
 validates every5 updates. Run at least3 independent training seeds when
 reporting comparisons; no multi-seed results are claimed here.
@@ -286,6 +432,12 @@ entry point additionally reports with/without-skills validation. Set the
 training seed through `--seed`; explicit additional Hydra overrides follow `--`.
 
 ### Validation status
+
+The shipped inputs have49 SHA256-checked files (about6.9 MiB), including both
+complete frozen banks and all7 prepared parquets. See
+[the data release audit](validation/data_release.json). Native task/category
+and prepared identity checks passed; this does not constitute a GPU training
+result or a fresh installation test of the original OCSD environment.
 
 Six CPU integration tests cover all28 training and28 final-test
 method/environment Hydra configurations, real task

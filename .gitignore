@@ -26,6 +26,7 @@ build/
 develop-eggs/
 dist/
 downloads/
+models/
 eggs/
 .eggs/
 lib/
@@ -133,6 +134,19 @@ data/
 data/*
 !data/new_benchmarks/
 !data/new_benchmarks/*.json
+!data/prepared/
+data/prepared/*
+!data/prepared/minihack_room/
+!data/prepared/scienceworld/
+data/prepared/minihack_room/*
+data/prepared/scienceworld/*
+!data/prepared/minihack_room/train.parquet
+!data/prepared/minihack_room/dev.parquet
+!data/prepared/minihack_room/test.parquet
+!data/prepared/scienceworld/train.parquet
+!data/prepared/scienceworld/dev.parquet
+!data/prepared/scienceworld/test.parquet
+!data/prepared/scienceworld/test_full.parquet
 .secrets/
 .tmp
 *ports

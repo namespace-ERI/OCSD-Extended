@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-16",
+  "release_file_count": 49,
+  "release_bytes": 7254227,
+  "groups": {
+    "skills/minihack_room": {
+      "files": 5,
+      "bytes": 1350891
+    },
+    "skills/scienceworld": {
+      "files": 33,
+      "bytes": 5617057
+    },
+    "data/prepared": {
+      "files": 7,
+      "bytes": 80278
+    },
+    "data/new_benchmarks": {
+      "files": 4,
+      "bytes": 206001
+    }
+  },
+  "release_manifest": "data/new_benchmarks/release_manifest.json",
+  "release_manifest_sha256": "326d920c555726f73fabf697e500a12d0f4f0527b742d8fd0882e8c4a22768f1",
+  "integrity_check_passed": true,
+  "prepared_parquet_identity_check_passed": true,
+  "native_scienceworld_all_29_categories_checked": true,
+  "integration_tests_passed": 6,
+  "training_hydra_configs_checked": 28,
+  "final_test_hydra_configs_checked": 28,
+  "readme_local_links_exist": true,
+  "new_gpu_or_optimizer_run_performed": false,
+  "shared_environments_modified": false
+}
