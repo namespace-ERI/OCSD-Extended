@@ -3,8 +3,9 @@
   "upstream_commit": "7cfdf110d05d2a745166a9162d3c9222f85117d6",
   "unit_integration": {
     "passed": true,
-    "tests": 5,
-    "hydra_method_environment_combinations": 28
+    "tests": 6,
+    "hydra_method_environment_combinations": 28,
+    "final_test_hydra_combinations": 28
   },
   "native_smoke": {
     "minihack_room": {
@@ -73,8 +74,8 @@
   "optimizer_step_tested": false,
   "full_training_tested": false,
   "files": {
-    "data/new_benchmarks/minihack_room.json": "46a6483d0423e8a88df747e350b796ecbb9d8d0a44d6c2e25493987c0b089643",
-    "data/new_benchmarks/scienceworld.json": "93526bb2ab0c80a9781c4fa567a8e32cd2458c73d59230a038da6a3d83570b25",
+    "data/new_benchmarks/minihack_room.json": "84c0bcd9019163984032fb498b98667445fd7c9dc24f809cec16092d7bf22ad7",
+    "data/new_benchmarks/scienceworld.json": "662bbb190c05c95eee18416ed1381e8d63e25cef783fc280acb6a6d845eaa3be",
     "skills/minihack_room/claude_style_skills.json": "531af9a1aad30384907981734535e076891c528c9919532cdb6e316db37a28c0",
     "skills/minihack_room/general_skills.md": "039a4ee030a739890a0a0b8406257cb51c4b7c47e0f85ea1d8fa8f4a3a48242e",
     "skills/minihack_room/evidence.jsonl": "5e9f1d09109beea5b2e1a755d131b89be85274c3e76f769abd3281f4cd5ea9f3",
@@ -112,14 +113,21 @@
     "skills/scienceworld/power-component-renewable-vs-nonrenewable-energy.md": "92e65f448338322b13abc68206eb0333ef11f839cebb82c9cfc4dcb68d57987e",
     "skills/scienceworld/inclined-plane-friction-unnamed-surfaces.md": "06032aace17ec27c7508f27f6427ada50cf4d943e8bbe9a76f389a304acdc11e",
     "skills/scienceworld/lifespan-longest-lived.md": "e35ae6edab3d54d772034ace068010865293c530c189bce4ba6b4d4ad76938b5",
-    "skills/scienceworld/test-conductivity.md": "6bbf837e75df602f5bd92003eb8b1adf377610754cb09bac8cde56728fe505e7"
+    "skills/scienceworld/test-conductivity.md": "6bbf837e75df602f5bd92003eb8b1adf377610754cb09bac8cde56728fe505e7",
+    "data/new_benchmarks/scienceworld_paper_eval_selection.json": "752827e6283aca0da180dc357d3b08e961c03de8673fb415e9adea652de67b6f",
+    "validation/competerl_paper_settings.json": "101d7d9ce3a51b5cd40ae0d9623d6646a7c8661edcf921e779fc14eec8c59e7f"
   },
   "minihack_history_uses_direction_names": true,
   "integration_source_hashes": {
     "agent_system/environments/new_benchmarks/manager.py": "d30b424f8684b1b8292b5b2158cfd3e464d618d5b50cc8123f71d38837833f58",
     "scripts/new_benchmarks/smoke_ray.py": "8800910a6c5002ccec56bf43dfaf57253837af1314bd9765d484acdec2abcf76",
     "scripts/new_benchmarks/smoke_pipeline.py": "3f3bafc23ce5bf4ec2528761d8377f2b88a8bd75fd50746091586be1ff1db0c6",
-    "scripts/new_benchmarks/train.py": "5b037c7e08864788b6b62265a68c9a3749aaae186198725fba54b513681e24b2"
+    "scripts/new_benchmarks/train.py": "85fa85e1a333b230d091abe7eb70e65c312b5bd8fb229644de029998207a2b35",
+    "scripts/new_benchmarks/align_paper_test.py": "737d4e5f2d78d77f21140e170da9ce585cbfee9b46f731a611ae8fc25b4f4706",
+    "scripts/new_benchmarks/audit_counts.py": "735d56f883626b71101a543cc8e99384a8c2d9567663b48b53fe9982d419ce0f",
+    "scripts/new_benchmarks/prepare_data.py": "fca71bd4ea139ce64f0a6793bf8a84c1cd720cf6de023dfb19cd2355ba90f71e",
+    "agent_system/environments/env_package/scienceworld/envs.py": "498c5f88d901cb72bc23f6d5bb4fcc2d81ba5e9a5b3cea3bddd21b4b1d48f48c",
+    "tests/new_benchmarks/test_integration.py": "1612ceebfaed78b21afd119c74853f9863a8439492c8d98b248c89de8ee8c0af"
   },
   "ppo_budget": {
     "tasks_per_update": 128,
@@ -132,5 +140,23 @@
     "upstream_alfworld_example_epochs": 200,
     "normalized_episode_budget": true
   },
-  "counts_and_matching_audit": "counts_and_matching.json"
+  "counts_and_matching_audit": "counts_and_matching.json",
+  "paper_test_alignment": {
+    "settings": "competerl_paper_settings.json",
+    "counts": "counts_and_matching.json",
+    "train_dev_preservation": {
+      "minihack_room": {
+        "training_identities_unchanged": true,
+        "dev_identities_unchanged": true
+      },
+      "scienceworld": {
+        "training_identities_unchanged": true,
+        "dev_identities_unchanged": true
+      }
+    },
+    "scienceworld_full_test_pool_preserved": true,
+    "minihack_exact_paper_seed_manifest_verified": false,
+    "test_temperature": 0.0,
+    "test_do_sample": false
+  }
 }

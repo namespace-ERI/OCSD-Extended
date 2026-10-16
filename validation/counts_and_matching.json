@@ -3,7 +3,7 @@
     "task_counts": {
       "train": 1000,
       "dev": 128,
-      "test": 500
+      "test": 128
     },
     "duplicates": 0,
     "split_overlap": 0,
@@ -13,13 +13,27 @@
     "specific_skills": 6,
     "mapped_categories": 1,
     "categories_without_success_skills": 0,
+    "paper_eval": {
+      "source": "CompeteRL Appendix B.1 p14 and B.2 Table4 p15",
+      "paper_stated": {
+        "environment": "MiniHack-Room-Ultimate-5x5-v0",
+        "fixed_heldout_seeds": true,
+        "max_steps": 30,
+        "eval_temperature": 0.0
+      },
+      "seed_start": 1073741824,
+      "test_count": 128,
+      "count_basis": "author preprocessing default128; author training launcher default64",
+      "paper_exact_seed_manifest_verified": false,
+      "limitation": "PDF does not state seed count or list; this is an explicit author-code-compatible choice."
+    },
     "parquet_identities_exact": true
   },
   "scienceworld": {
     "task_counts": {
       "train": 3194,
       "dev": 128,
-      "test": 1661
+      "test": 128
     },
     "duplicates": 0,
     "split_overlap": 0,
@@ -29,6 +43,20 @@
     "specific_skills": 62,
     "mapped_categories": 29,
     "categories_without_success_skills": 17,
+    "full_test_pool_size": 1661,
+    "selected_test_subset_in_full_pool": true,
+    "paper_eval": {
+      "source": "CompeteRL Appendix B.1 pp14-15 and B.2 Table4 p15",
+      "test_pool_size": 1661,
+      "selected_test_size": 128,
+      "eval_seed": 1,
+      "selection_algorithm": "sha256_pair_rank_v1",
+      "max_steps": 30,
+      "eval_temperature": 0.0,
+      "success": "final native score exactly100",
+      "selection_matches_author_preprocessing": true,
+      "selection_manifest": "scienceworld_paper_eval_selection.json"
+    },
     "parquet_identities_exact": true,
     "all_29_categories_match_native_task_names": true
   }

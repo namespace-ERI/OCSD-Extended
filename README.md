@@ -52,17 +52,26 @@ python scripts/new_benchmarks/prepare_data.py
 
 | Added environment | Training pool | Development | Final test | Horizon | Prompt / response tokens |
 |---|---:|---:|---:|---:|---:|
-| MiniHack-Room-Ultimate-5x5-v0 | 1,000 fixed seeds | 128 fixed seeds | 500 fixed seeds | 30 | 12,288 / 2,048 |
-| ScienceWorld BEACON L0,29 task families | 3,194 task/variation pairs | 128 pairs | 1,661 pairs | 30 | 15,000 / 512 |
+| MiniHack-Room-Ultimate-5x5-v0 | 1,000 fixed seeds | 128 fixed seeds | 128 fixed seeds (author preprocessing default; see limitation below) | 30 | 12,288 / 2,048 |
+| ScienceWorld BEACON L0,29 task families | 3,194 task/variation pairs | 128 pairs | 128 fixed pairs selected from 1,661 | 30 | 15,000 / 512 |
 
-MiniHack training seeds are the same1,000 used for strategy extraction. Dev/test
-use distinct seeds in `[2**30, 2**31-1)`, deterministically sampled with
-seed20261016; none overlaps the training pool. The initial NLE engine seeds,
-including level-generator seeds and fixed moon phase, are explicitly set.
+MiniHack training seeds are the same1,000 used for strategy extraction. Dev
+uses128 distinct seeds in `[2**30, 2**31-1)`, sampled with seed20261016.
+Test uses the128 contiguous seeds `2**30 + i`, `i=0..127`, following the
+author's preprocessing defaults; all three sets are disjoint. The initial
+NLE engine seeds, including level-generator seeds and fixed moon phase,
+are explicitly set.
 
 The source ScienceWorld L0 protocol contains3,322 train and1,661 test pairs and
-no dev split. This extension leaves **all1,661 test pairs unchanged** and holds
-out128 from the original training pool: up to4 per task family followed by a
+no dev split. This extension preserves **all1,661 pairs as the full test pool**
+and uses a **fixed128-pair subset for the paper evaluation**, as specified in
+CompeteRL Appendix B.1. Selection follows the author preprocessing algorithm:
+`sha256_pair_rank_v1`, evaluation seed1. Exact identities are checked in as
+[scienceworld_paper_eval_selection.json](data/new_benchmarks/scienceworld_paper_eval_selection.json),
+generated with that algorithm and its default evaluation seed.
+The larger pool is available separately as `test_full`; it is not the paper's
+reported128-instance evaluation. We hold out128 from the original training
+pool: up to4 per task family followed by a
 deterministic hash fill (seed20261016). The remaining3,194 are used for RL and
 skill construction. This128-pair dev split is our extension protocol, not an
 official ScienceWorld dev set. It covers all29 L0 families. Train/dev/test
@@ -99,18 +108,64 @@ Two upstream exceptions need explicit treatment:
 
 Pool sizes are separate choices from update batch sizes. MiniHack's1,000
 training seeds follow the requested extraction pool;128 dev follows the old
-validation-batch scale, and500 test is an extension choice following the scale
-of our prior full WebShop evaluation. The128/500 split is not claimed to be
-an official MiniHack benchmark split. ScienceWorld's3,322/1,661 source pools
-come from the BEACON L0 protocol, with the documented128-train-instance holdout.
+validation-batch scale. ScienceWorld's3,322/1,661 source pools come from the
+BEACON L0 protocol, with the documented128-train-instance holdout.
 
-Importantly, `trainer.total_training_steps=150` is explicit. The old16-row
+**MiniHack reproduction limitation:** CompeteRL specifies fixed held-out seeds
+but its PDF does not give their number or identities. The author launcher
+defaults to64 validation instances, while the author preprocessing script
+defaults to128 contiguous seeds starting at `2**30`. This release explicitly
+chooses the latter; it does **not** claim to recover the exact test manifest
+used for the paper's reported MiniHack scores. To regenerate either code
+default, run the following and then prepare the parquets again:
+
+```bash
+python scripts/new_benchmarks/align_paper_test.py --minihack-test-count 128
+python scripts/new_benchmarks/prepare_data.py
+```
+
+Use `--minihack-test-count 64` for the author launcher-sized alternative;
+report that choice with results. ScienceWorld selection is unchanged by this
+option. These operations preserve train/dev identities and skill libraries.
+
+### CompeteRL training settings for reference
+
+The test profile above follows CompeteRL Appendix B.1 (pp14–15) and evaluation
+temperature in Table4 (p15). Its **training** settings differ from the OCSD
+budget retained here. Appendix B.2 and Table4 report:
+
+| CompeteRL setting | MiniHack Room | ScienceWorld |
+|---|---:|---:|
+| Training tasks | No finite seed count stated in PDF; author code samples seeds online from `[0, 2**30)` | 3,322 L0 task/variation pairs |
+| Maximum optimizer updates | 200 | 300 |
+| Task prompts / rollouts per task | 16 / 8 | 16 / 8 |
+| Maximum environment steps per episode | 30 | 30 |
+| Prompt / response tokens | 12,288 / 2,048 | 15,000 / 512 |
+| PPO micro-batch per GPU | 8 | 1 |
+| Evaluation temperature | 0 | 0 |
+
+Shared paper settings are learning rate `1e-6`, KL coefficient `0.01`, PPO
+mini-batch256, training temperature1/top-p1, BF16/FSDP with gradient
+checkpointing, and4 GPUs with vLLM tensor parallelism4. Its foresight and
+hindsight phases execute paired trajectories from the same task reset.
+`200 × 16 × 8 = 25,600` and `300 × 16 × 8 = 38,400` are the nominal
+sampling slots **per phase**, not the total executions across both phases.
+
+This extension still uses the OCSD comparison budget of150 updates and the
+1,000/3,194 training pools above. It has **not** changed training to the
+CompeteRL200/300-update budgets or restored the128 held-out ScienceWorld dev
+pairs to training. Source facts and these differences are also recorded in
+[competerl_paper_settings.json](validation/competerl_paper_settings.json),
+including the supplied PDF's SHA256. MiniHack online sampling is an observation
+from author code, not a finite training-data count supplied by the PDF.
+
+`trainer.total_training_steps=150` is explicit. The old16-row
 placeholder parquet made150 epochs equal150 updates; using the full task pool
 with only an epoch limit would accidentally multiply the budget. The new
 parquets contain one real identity per task, with shuffled training batches;
 each identity is repeated8 times for grouped rollout (once for PPO). Validation uses one
-rollout per identity and a fixed dev set; final test uses the full test parquet,
-including the final partial batch. Training defaults reject selecting test as
+rollout per identity and a fixed dev set; final test visits all identities in
+the selected test parquet, including the final partial batch. Training defaults reject selecting test as
 the periodic evaluation split.
 
 MiniHack reward is native binary success. ScienceWorld uses native
@@ -209,7 +264,8 @@ Checkpoint retention keeps the latest checkpoint, saves every30 updates, and
 validates every5 updates. Run at least3 independent training seeds when
 reporting comparisons; no multi-seed results are claimed here.
 
-Evaluate a converted/exported model checkpoint on the entire test set with:
+Evaluate a converted/exported model checkpoint on the fixed128-instance test
+profile with:
 
 ```bash
 python scripts/new_benchmarks/train.py --env scienceworld --method grpo \
@@ -217,14 +273,22 @@ python scripts/new_benchmarks/train.py --env scienceworld --method grpo \
   --eval-split test --val-only
 ```
 
+Test evaluation uses **temperature0 and `do_sample=False`**. ScienceWorld
+success requires the final native score to equal100; lower scores are failures.
+For an additional ScienceWorld evaluation on all1,661 held-out pairs, use
+`--eval-split test_full --val-only` instead. Report that larger evaluation
+separately from the paper's128-instance metric. Both test profiles require
+`--val-only`; periodic development evaluation remains temperature0.4 with
+sampling enabled.
+
 Use the same skill-free evaluator for distilled methods; Skill-GRPO's own
-entry point additionally reports with/without-skills validation. Evaluation
-temperature defaults to0.4 and sampling is enabled, matching upstream. Set
+entry point additionally reports with/without-skills validation. Set the
 training seed through `--seed`; explicit additional Hydra overrides follow `--`.
 
 ### Validation status
 
-CPU validation covers all28 method/environment Hydra configurations, real task
+Six CPU integration tests cover all28 training and28 final-test
+method/environment Hydra configurations, real task
 parquet generation, train/dev/test isolation, exact task-to-skill routing,
 verbatim skill provenance, action parsing, and OCSD action schemas. Native
 MiniHack reset/no-op/real win/terminal replay and native ScienceWorld reset,

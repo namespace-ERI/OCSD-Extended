@@ -202,7 +202,7 @@ class ScienceWorldWorker:
                 "observation_text": observation,
                 "score": score,
                 "task_score": score,
-                "won": score >= self.success_score,
+                "won": score == self.success_score,
             }
         )
         return info
@@ -269,7 +269,7 @@ class ScienceWorldWorker:
         info = self._enrich_info(raw_info, str(observation))
         score = float(info["score"])
         score_delta = score - self.previous_score
-        won = bool(score >= self.success_score)
+        won = bool(score == self.success_score)
         subgoal_completed = score_delta > 0.0
 
         if self.reward_mode == "binary":

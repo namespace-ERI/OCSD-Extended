@@ -1,0 +1,52 @@
+{
+  "paper_title": "CompeteRL: Foresight\u2013Hindsight Competitive Reinforcement Learning",
+  "attachment_filename": "39053_CompeteRL_Foresight_Hind.pdf",
+  "pdf_sha256": "e2884c7a30aba2ec6d02acb88e8e0b149832a133a41a9875654865c853e21420",
+  "references": {
+    "evaluation": "Appendix B.1 pp14\u201315",
+    "training": "Appendix B.2 and Table4 p15"
+  },
+  "training_shared": {
+    "task_batch": 16,
+    "group_size": 8,
+    "learning_rate": 1e-06,
+    "kl_coefficient": 0.01,
+    "ppo_mini_batch": 256,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "gpus": 4,
+    "tensor_parallel": 4,
+    "dtype": "bfloat16"
+  },
+  "training_environment": {
+    "minihack_room": {
+      "max_optimizer_updates": 200,
+      "max_env_steps": 30,
+      "max_prompt_tokens": 12288,
+      "max_response_tokens": 2048,
+      "micro_batch_per_gpu": 8,
+      "fixed_training_seed_count_stated_in_pdf": false,
+      "author_code_train_seed_range": [
+        0,
+        1073741824
+      ]
+    },
+    "scienceworld": {
+      "train_pool": 3322,
+      "full_test_pool": 1661,
+      "selected_test": 128,
+      "max_optimizer_updates": 300,
+      "max_env_steps": 30,
+      "max_prompt_tokens": 15000,
+      "max_response_tokens": 512,
+      "micro_batch_per_gpu": 1
+    }
+  },
+  "repo_training_not_changed": {
+    "max_updates": 150,
+    "minihack_train_pool": 1000,
+    "scienceworld_train_pool": 3194,
+    "scienceworld_dev_holdout": 128
+  },
+  "minihack_test_limitations": "PDF does not state seed count/list. Author launcher64 vs preprocessing128 defaults conflict; default128 is an explicit code-compatible choice, not a verified paper result manifest."
+}

@@ -1,0 +1,786 @@
+{
+  "metadata": {
+    "protocol": "beacon_l0",
+    "eval_split": "test",
+    "eval_seed": 1,
+    "eval_size": 128,
+    "pool_size": 1661,
+    "selection_algorithm": "sha256_pair_rank_v1",
+    "manifest_sha256": "cc76df4d976734cbcf4b31788572ce8d065ea2d57c7c19cc550d15c5137fb94d",
+    "split_membership_sha256": "fdf7a48e85768311c95dc6f96d1eb44cb29c1e5ec777d57019b1784cbeff849e",
+    "identity_fields": [
+      "task_index",
+      "variation_id"
+    ]
+  },
+  "instances": [
+    {
+      "selection_index": 0,
+      "manifest_position": 1556,
+      "task_index": 24,
+      "variation_id": 314
+    },
+    {
+      "selection_index": 1,
+      "manifest_position": 18,
+      "task_index": 24,
+      "variation_id": 338
+    },
+    {
+      "selection_index": 2,
+      "manifest_position": 385,
+      "task_index": 23,
+      "variation_id": 67
+    },
+    {
+      "selection_index": 3,
+      "manifest_position": 1570,
+      "task_index": 7,
+      "variation_id": 209
+    },
+    {
+      "selection_index": 4,
+      "manifest_position": 771,
+      "task_index": 17,
+      "variation_id": 65
+    },
+    {
+      "selection_index": 5,
+      "manifest_position": 457,
+      "task_index": 15,
+      "variation_id": 793
+    },
+    {
+      "selection_index": 6,
+      "manifest_position": 1492,
+      "task_index": 27,
+      "variation_id": 465
+    },
+    {
+      "selection_index": 7,
+      "manifest_position": 1130,
+      "task_index": 23,
+      "variation_id": 79
+    },
+    {
+      "selection_index": 8,
+      "manifest_position": 1177,
+      "task_index": 15,
+      "variation_id": 783
+    },
+    {
+      "selection_index": 9,
+      "manifest_position": 523,
+      "task_index": 15,
+      "variation_id": 904
+    },
+    {
+      "selection_index": 10,
+      "manifest_position": 1144,
+      "task_index": 28,
+      "variation_id": 415
+    },
+    {
+      "selection_index": 11,
+      "manifest_position": 1273,
+      "task_index": 20,
+      "variation_id": 287
+    },
+    {
+      "selection_index": 12,
+      "manifest_position": 857,
+      "task_index": 11,
+      "variation_id": 87
+    },
+    {
+      "selection_index": 13,
+      "manifest_position": 1525,
+      "task_index": 5,
+      "variation_id": 155
+    },
+    {
+      "selection_index": 14,
+      "manifest_position": 1572,
+      "task_index": 15,
+      "variation_id": 722
+    },
+    {
+      "selection_index": 15,
+      "manifest_position": 1109,
+      "task_index": 27,
+      "variation_id": 626
+    },
+    {
+      "selection_index": 16,
+      "manifest_position": 888,
+      "task_index": 5,
+      "variation_id": 178
+    },
+    {
+      "selection_index": 17,
+      "manifest_position": 1011,
+      "task_index": 16,
+      "variation_id": 102
+    },
+    {
+      "selection_index": 18,
+      "manifest_position": 598,
+      "task_index": 28,
+      "variation_id": 429
+    },
+    {
+      "selection_index": 19,
+      "manifest_position": 81,
+      "task_index": 17,
+      "variation_id": 71
+    },
+    {
+      "selection_index": 20,
+      "manifest_position": 505,
+      "task_index": 28,
+      "variation_id": 364
+    },
+    {
+      "selection_index": 21,
+      "manifest_position": 518,
+      "task_index": 21,
+      "variation_id": 207
+    },
+    {
+      "selection_index": 22,
+      "manifest_position": 1239,
+      "task_index": 0,
+      "variation_id": 15
+    },
+    {
+      "selection_index": 23,
+      "manifest_position": 165,
+      "task_index": 19,
+      "variation_id": 86
+    },
+    {
+      "selection_index": 24,
+      "manifest_position": 373,
+      "task_index": 6,
+      "variation_id": 194
+    },
+    {
+      "selection_index": 25,
+      "manifest_position": 650,
+      "task_index": 17,
+      "variation_id": 69
+    },
+    {
+      "selection_index": 26,
+      "manifest_position": 425,
+      "task_index": 8,
+      "variation_id": 195
+    },
+    {
+      "selection_index": 27,
+      "manifest_position": 1265,
+      "task_index": 27,
+      "variation_id": 531
+    },
+    {
+      "selection_index": 28,
+      "manifest_position": 118,
+      "task_index": 27,
+      "variation_id": 524
+    },
+    {
+      "selection_index": 29,
+      "manifest_position": 1588,
+      "task_index": 21,
+      "variation_id": 171
+    },
+    {
+      "selection_index": 30,
+      "manifest_position": 1148,
+      "task_index": 28,
+      "variation_id": 395
+    },
+    {
+      "selection_index": 31,
+      "manifest_position": 1092,
+      "task_index": 15,
+      "variation_id": 800
+    },
+    {
+      "selection_index": 32,
+      "manifest_position": 824,
+      "task_index": 20,
+      "variation_id": 317
+    },
+    {
+      "selection_index": 33,
+      "manifest_position": 1620,
+      "task_index": 11,
+      "variation_id": 69
+    },
+    {
+      "selection_index": 34,
+      "manifest_position": 883,
+      "task_index": 15,
+      "variation_id": 856
+    },
+    {
+      "selection_index": 35,
+      "manifest_position": 999,
+      "task_index": 15,
+      "variation_id": 918
+    },
+    {
+      "selection_index": 36,
+      "manifest_position": 627,
+      "task_index": 15,
+      "variation_id": 795
+    },
+    {
+      "selection_index": 37,
+      "manifest_position": 1424,
+      "task_index": 18,
+      "variation_id": 64
+    },
+    {
+      "selection_index": 38,
+      "manifest_position": 168,
+      "task_index": 15,
+      "variation_id": 847
+    },
+    {
+      "selection_index": 39,
+      "manifest_position": 983,
+      "task_index": 26,
+      "variation_id": 11
+    },
+    {
+      "selection_index": 40,
+      "manifest_position": 1046,
+      "task_index": 11,
+      "variation_id": 92
+    },
+    {
+      "selection_index": 41,
+      "manifest_position": 964,
+      "task_index": 20,
+      "variation_id": 271
+    },
+    {
+      "selection_index": 42,
+      "manifest_position": 294,
+      "task_index": 0,
+      "variation_id": 20
+    },
+    {
+      "selection_index": 43,
+      "manifest_position": 106,
+      "task_index": 18,
+      "variation_id": 83
+    },
+    {
+      "selection_index": 44,
+      "manifest_position": 1638,
+      "task_index": 15,
+      "variation_id": 840
+    },
+    {
+      "selection_index": 45,
+      "manifest_position": 1168,
+      "task_index": 22,
+      "variation_id": 17
+    },
+    {
+      "selection_index": 46,
+      "manifest_position": 1641,
+      "task_index": 15,
+      "variation_id": 972
+    },
+    {
+      "selection_index": 47,
+      "manifest_position": 1185,
+      "task_index": 7,
+      "variation_id": 178
+    },
+    {
+      "selection_index": 48,
+      "manifest_position": 361,
+      "task_index": 15,
+      "variation_id": 881
+    },
+    {
+      "selection_index": 49,
+      "manifest_position": 1503,
+      "task_index": 15,
+      "variation_id": 915
+    },
+    {
+      "selection_index": 50,
+      "manifest_position": 701,
+      "task_index": 24,
+      "variation_id": 333
+    },
+    {
+      "selection_index": 51,
+      "manifest_position": 306,
+      "task_index": 28,
+      "variation_id": 399
+    },
+    {
+      "selection_index": 52,
+      "manifest_position": 1017,
+      "task_index": 7,
+      "variation_id": 193
+    },
+    {
+      "selection_index": 53,
+      "manifest_position": 315,
+      "task_index": 1,
+      "variation_id": 15
+    },
+    {
+      "selection_index": 54,
+      "manifest_position": 272,
+      "task_index": 15,
+      "variation_id": 995
+    },
+    {
+      "selection_index": 55,
+      "manifest_position": 1632,
+      "task_index": 27,
+      "variation_id": 674
+    },
+    {
+      "selection_index": 56,
+      "manifest_position": 1552,
+      "task_index": 8,
+      "variation_id": 201
+    },
+    {
+      "selection_index": 57,
+      "manifest_position": 599,
+      "task_index": 10,
+      "variation_id": 83
+    },
+    {
+      "selection_index": 58,
+      "manifest_position": 780,
+      "task_index": 10,
+      "variation_id": 86
+    },
+    {
+      "selection_index": 59,
+      "manifest_position": 1575,
+      "task_index": 23,
+      "variation_id": 85
+    },
+    {
+      "selection_index": 60,
+      "manifest_position": 395,
+      "task_index": 15,
+      "variation_id": 880
+    },
+    {
+      "selection_index": 61,
+      "manifest_position": 340,
+      "task_index": 14,
+      "variation_id": 92
+    },
+    {
+      "selection_index": 62,
+      "manifest_position": 179,
+      "task_index": 25,
+      "variation_id": 13
+    },
+    {
+      "selection_index": 63,
+      "manifest_position": 1621,
+      "task_index": 21,
+      "variation_id": 184
+    },
+    {
+      "selection_index": 64,
+      "manifest_position": 1043,
+      "task_index": 28,
+      "variation_id": 307
+    },
+    {
+      "selection_index": 65,
+      "manifest_position": 1433,
+      "task_index": 27,
+      "variation_id": 476
+    },
+    {
+      "selection_index": 66,
+      "manifest_position": 1391,
+      "task_index": 15,
+      "variation_id": 926
+    },
+    {
+      "selection_index": 67,
+      "manifest_position": 1259,
+      "task_index": 15,
+      "variation_id": 937
+    },
+    {
+      "selection_index": 68,
+      "manifest_position": 470,
+      "task_index": 24,
+      "variation_id": 343
+    },
+    {
+      "selection_index": 69,
+      "manifest_position": 1081,
+      "task_index": 28,
+      "variation_id": 432
+    },
+    {
+      "selection_index": 70,
+      "manifest_position": 603,
+      "task_index": 20,
+      "variation_id": 259
+    },
+    {
+      "selection_index": 71,
+      "manifest_position": 451,
+      "task_index": 24,
+      "variation_id": 295
+    },
+    {
+      "selection_index": 72,
+      "manifest_position": 1640,
+      "task_index": 11,
+      "variation_id": 76
+    },
+    {
+      "selection_index": 73,
+      "manifest_position": 764,
+      "task_index": 20,
+      "variation_id": 230
+    },
+    {
+      "selection_index": 74,
+      "manifest_position": 14,
+      "task_index": 15,
+      "variation_id": 791
+    },
+    {
+      "selection_index": 75,
+      "manifest_position": 1013,
+      "task_index": 18,
+      "variation_id": 71
+    },
+    {
+      "selection_index": 76,
+      "manifest_position": 1278,
+      "task_index": 3,
+      "variation_id": 20
+    },
+    {
+      "selection_index": 77,
+      "manifest_position": 1603,
+      "task_index": 17,
+      "variation_id": 87
+    },
+    {
+      "selection_index": 78,
+      "manifest_position": 1449,
+      "task_index": 27,
+      "variation_id": 585
+    },
+    {
+      "selection_index": 79,
+      "manifest_position": 1140,
+      "task_index": 27,
+      "variation_id": 503
+    },
+    {
+      "selection_index": 80,
+      "manifest_position": 761,
+      "task_index": 8,
+      "variation_id": 210
+    },
+    {
+      "selection_index": 81,
+      "manifest_position": 209,
+      "task_index": 11,
+      "variation_id": 79
+    },
+    {
+      "selection_index": 82,
+      "manifest_position": 1142,
+      "task_index": 28,
+      "variation_id": 437
+    },
+    {
+      "selection_index": 83,
+      "manifest_position": 912,
+      "task_index": 21,
+      "variation_id": 216
+    },
+    {
+      "selection_index": 84,
+      "manifest_position": 574,
+      "task_index": 20,
+      "variation_id": 234
+    },
+    {
+      "selection_index": 85,
+      "manifest_position": 623,
+      "task_index": 27,
+      "variation_id": 588
+    },
+    {
+      "selection_index": 86,
+      "manifest_position": 109,
+      "task_index": 10,
+      "variation_id": 76
+    },
+    {
+      "selection_index": 87,
+      "manifest_position": 434,
+      "task_index": 28,
+      "variation_id": 353
+    },
+    {
+      "selection_index": 88,
+      "manifest_position": 736,
+      "task_index": 24,
+      "variation_id": 350
+    },
+    {
+      "selection_index": 89,
+      "manifest_position": 781,
+      "task_index": 8,
+      "variation_id": 214
+    },
+    {
+      "selection_index": 90,
+      "manifest_position": 285,
+      "task_index": 15,
+      "variation_id": 751
+    },
+    {
+      "selection_index": 91,
+      "manifest_position": 365,
+      "task_index": 21,
+      "variation_id": 219
+    },
+    {
+      "selection_index": 92,
+      "manifest_position": 143,
+      "task_index": 27,
+      "variation_id": 526
+    },
+    {
+      "selection_index": 93,
+      "manifest_position": 646,
+      "task_index": 24,
+      "variation_id": 275
+    },
+    {
+      "selection_index": 94,
+      "manifest_position": 1078,
+      "task_index": 11,
+      "variation_id": 72
+    },
+    {
+      "selection_index": 95,
+      "manifest_position": 546,
+      "task_index": 27,
+      "variation_id": 478
+    },
+    {
+      "selection_index": 96,
+      "manifest_position": 73,
+      "task_index": 6,
+      "variation_id": 156
+    },
+    {
+      "selection_index": 97,
+      "manifest_position": 920,
+      "task_index": 27,
+      "variation_id": 576
+    },
+    {
+      "selection_index": 98,
+      "manifest_position": 4,
+      "task_index": 7,
+      "variation_id": 208
+    },
+    {
+      "selection_index": 99,
+      "manifest_position": 1529,
+      "task_index": 15,
+      "variation_id": 756
+    },
+    {
+      "selection_index": 100,
+      "manifest_position": 1293,
+      "task_index": 20,
+      "variation_id": 223
+    },
+    {
+      "selection_index": 101,
+      "manifest_position": 493,
+      "task_index": 27,
+      "variation_id": 577
+    },
+    {
+      "selection_index": 102,
+      "manifest_position": 185,
+      "task_index": 23,
+      "variation_id": 71
+    },
+    {
+      "selection_index": 103,
+      "manifest_position": 1353,
+      "task_index": 8,
+      "variation_id": 221
+    },
+    {
+      "selection_index": 104,
+      "manifest_position": 353,
+      "task_index": 15,
+      "variation_id": 749
+    },
+    {
+      "selection_index": 105,
+      "manifest_position": 376,
+      "task_index": 7,
+      "variation_id": 186
+    },
+    {
+      "selection_index": 106,
+      "manifest_position": 94,
+      "task_index": 15,
+      "variation_id": 950
+    },
+    {
+      "selection_index": 107,
+      "manifest_position": 1596,
+      "task_index": 6,
+      "variation_id": 209
+    },
+    {
+      "selection_index": 108,
+      "manifest_position": 639,
+      "task_index": 16,
+      "variation_id": 94
+    },
+    {
+      "selection_index": 109,
+      "manifest_position": 1146,
+      "task_index": 8,
+      "variation_id": 161
+    },
+    {
+      "selection_index": 110,
+      "manifest_position": 48,
+      "task_index": 20,
+      "variation_id": 228
+    },
+    {
+      "selection_index": 111,
+      "manifest_position": 1137,
+      "task_index": 6,
+      "variation_id": 199
+    },
+    {
+      "selection_index": 112,
+      "manifest_position": 944,
+      "task_index": 24,
+      "variation_id": 344
+    },
+    {
+      "selection_index": 113,
+      "manifest_position": 1579,
+      "task_index": 27,
+      "variation_id": 673
+    },
+    {
+      "selection_index": 114,
+      "manifest_position": 1202,
+      "task_index": 5,
+      "variation_id": 175
+    },
+    {
+      "selection_index": 115,
+      "manifest_position": 799,
+      "task_index": 27,
+      "variation_id": 498
+    },
+    {
+      "selection_index": 116,
+      "manifest_position": 169,
+      "task_index": 24,
+      "variation_id": 356
+    },
+    {
+      "selection_index": 117,
+      "manifest_position": 49,
+      "task_index": 8,
+      "variation_id": 219
+    },
+    {
+      "selection_index": 118,
+      "manifest_position": 966,
+      "task_index": 27,
+      "variation_id": 525
+    },
+    {
+      "selection_index": 119,
+      "manifest_position": 1262,
+      "task_index": 5,
+      "variation_id": 156
+    },
+    {
+      "selection_index": 120,
+      "manifest_position": 1360,
+      "task_index": 7,
+      "variation_id": 169
+    },
+    {
+      "selection_index": 121,
+      "manifest_position": 1435,
+      "task_index": 16,
+      "variation_id": 118
+    },
+    {
+      "selection_index": 122,
+      "manifest_position": 1108,
+      "task_index": 24,
+      "variation_id": 336
+    },
+    {
+      "selection_index": 123,
+      "manifest_position": 1495,
+      "task_index": 7,
+      "variation_id": 154
+    },
+    {
+      "selection_index": 124,
+      "manifest_position": 317,
+      "task_index": 16,
+      "variation_id": 111
+    },
+    {
+      "selection_index": 125,
+      "manifest_position": 610,
+      "task_index": 2,
+      "variation_id": 21
+    },
+    {
+      "selection_index": 126,
+      "manifest_position": 934,
+      "task_index": 21,
+      "variation_id": 186
+    },
+    {
+      "selection_index": 127,
+      "manifest_position": 25,
+      "task_index": 8,
+      "variation_id": 167
+    }
+  ]
+}

@@ -27,7 +27,8 @@ def main():
     for kind in ['minihack_room', 'scienceworld']:
         folder = args.output / kind
         folder.mkdir(parents=True, exist_ok=True)
-        for split in ['train', 'dev', 'test']:
+        manifest = json.loads((ROOT / 'data/new_benchmarks' / f'{kind}.json').read_text())
+        for split in ['train', 'dev', 'test'] + (['test_full'] if 'test_full' in manifest else []):
             entries = rows(kind, split)
             pq.write_table(pa.Table.from_pylist(entries), folder / f'{split}.parquet')
             print(kind, split, len(entries))

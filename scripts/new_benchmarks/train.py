@@ -46,8 +46,8 @@ def command(args):
         'actor_rollout_ref.rollout.enable_chunked_prefill': False,
         'actor_rollout_ref.rollout.enforce_eager': False, 'actor_rollout_ref.rollout.free_cache_engine': False,
         'actor_rollout_ref.rollout.temperature': 1., 'actor_rollout_ref.rollout.top_p': 1.,
-        'actor_rollout_ref.rollout.val_kwargs.temperature': .4,
-        'actor_rollout_ref.rollout.val_kwargs.do_sample': True,
+        'actor_rollout_ref.rollout.val_kwargs.temperature': 0. if args.eval_split.startswith('test') else .4,
+        'actor_rollout_ref.rollout.val_kwargs.do_sample': not args.eval_split.startswith('test'),
         'actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu': 8,
         'actor_rollout_ref.ref.fsdp_config.param_offload': True,
         'actor_rollout_ref.actor.use_invalid_action_penalty': True,
@@ -127,7 +127,7 @@ def parser():
     p.add_argument('--output', default='outputs/new_benchmarks')
     p.add_argument('--seed', type=int, default=0)
     p.add_argument('--engine', default='vllm')
-    p.add_argument('--eval-split', choices=['dev', 'test'], default='dev')
+    p.add_argument('--eval-split', choices=['dev', 'test', 'test_full'], default='dev')
     p.add_argument('--val-only', action='store_true')
     p.add_argument('--dry-run', action='store_true')
     p.add_argument('overrides', nargs=argparse.REMAINDER)
@@ -138,7 +138,7 @@ if __name__ == '__main__':
     a = parser().parse_args()
     if a.overrides[:1] == ['--']:
         a.overrides = a.overrides[1:]
-    if a.eval_split == 'test' and not a.val_only:
+    if a.eval_split.startswith('test') and not a.val_only:
         raise SystemExit('Use dev for training; test is only available with --val-only.')
     cmd = command(a)
     if a.dry_run:

@@ -24,7 +24,7 @@ class Integration(unittest.TestCase):
 
     def test_splits_and_rows(self):
         prepare = module('prepare_extension', 'scripts/new_benchmarks/prepare_data.py')
-        for kind, sizes in [('minihack_room', [1000, 128, 500]), ('scienceworld', [3194, 128, 1661])]:
+        for kind, sizes in [('minihack_room', [1000, 128, 128]), ('scienceworld', [3194, 128, 128])]:
             d = json.loads((ROOT / f'data/new_benchmarks/{kind}.json').read_text())
             sets = [set(map(str, d[s])) for s in ['train', 'dev', 'test']]
             self.assertEqual(list(map(len, sets)), sizes)
@@ -89,6 +89,25 @@ class Integration(unittest.TestCase):
                 self.assertFalse(cfg.data.apply_chat_template_kwargs.enable_thinking)
                 if method == 'opsd':
                     self.assertEqual(cfg.actor_rollout_ref.actor.pg_loss_coef, 0)
+
+    def test_paper_test_profiles(self):
+        launch = module('paper_launch', 'scripts/new_benchmarks/train.py')
+        align = module('paper_alignment', 'scripts/new_benchmarks/align_paper_test.py')
+        sw = json.loads((ROOT / 'data/new_benchmarks/scienceworld.json').read_text())
+        gold = json.loads((ROOT / 'data/new_benchmarks/scienceworld_paper_eval_selection.json').read_text())
+        self.assertEqual(sw['test'], align.scienceworld_selection(sw['test_full']))
+        self.assertEqual(sw['test'], [[x['task_index'], x['variation_id']] for x in gold['instances']])
+        mh = json.loads((ROOT / 'data/new_benchmarks/minihack_room.json').read_text())
+        self.assertEqual(mh['test'], list(range(2**30, 2**30 + 128)))
+        self.assertFalse(mh['metadata']['paper_eval']['paper_exact_seed_manifest_verified'])
+        from hydra import compose, initialize_config_dir
+        for kind in ['minihack_room', 'scienceworld']:
+            for method in launch.METHODS:
+                args = launch.parser().parse_args(['--env', kind, '--method', method, '--eval-split', 'test', '--val-only'])
+                with initialize_config_dir(config_dir=str(ROOT / 'verl/trainer/config'), version_base=None):
+                    cfg = compose(config_name='ppo_trainer', overrides=launch.command(args)[3:])
+                self.assertEqual(cfg.actor_rollout_ref.rollout.val_kwargs.temperature, 0)
+                self.assertFalse(cfg.actor_rollout_ref.rollout.val_kwargs.do_sample)
 
 
 if __name__ == '__main__':

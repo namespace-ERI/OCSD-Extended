@@ -8,6 +8,11 @@ https://anonymous.4open.science/r/CompeteRLICLR27-CC5F
 That source distributes an Apache-2.0 LICENSE. Changes in this extension include
 OCSD-specific manager wiring, explicit split identities, task-type propagation,
 ScienceWorld reason-tag compatibility, and new-benchmark action schemas.
+ScienceWorld test selection follows examples/data_preprocess/scienceworld.py
+from that snapshot (sha256_pair_rank_v1, seed1, size128); the checked-in selection
+was generated from its BEACON L0 manifest, not supplied as a paper result file.
+MiniHack's checked-in128 test seeds follow the author's preprocessing default;
+the PDF omits the exact seed manifest and the launcher instead defaults to64.
 MiniHack/NLE and ScienceWorld packages retain their respective upstream licenses;
 native simulator binaries and packages are not vendored in this repository.
 

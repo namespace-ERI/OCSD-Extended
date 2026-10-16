@@ -41,13 +41,23 @@ def main():
                 'specific_skills': sum(map(len, bank['task_specific_skills'].values())),
                 'mapped_categories': len(categories),
                 'categories_without_success_skills': sum(not v for v in bank['task_specific_skills'].values())}
+        if 'test_full' in data:
+            full = set(map(canonical, data['test_full']))
+            assert len(full) == len(data['test_full']) == 1661
+            assert pools['test'] <= full and not (full & pools['train'] or full & pools['dev'])
+            info['full_test_pool_size'] = len(full)
+            info['selected_test_subset_in_full_pool'] = True
+        info['paper_eval'] = data['metadata'].get('paper_eval')
         if args.prepared:
             import pyarrow.parquet as pq
-            for split in pools:
+            prepared_pools = dict(pools)
+            if 'test_full' in data:
+                prepared_pools['test_full'] = full
+            for split, expected in prepared_pools.items():
                 table = pq.read_table(args.prepared / kind / f'{split}.parquet')
                 values = table['env_kwargs'].to_pylist()
                 actual = [int(x['seed']) if kind == 'minihack_room' else (int(x['task_index']), int(x['variation_id'])) for x in values]
-                assert len(actual) == len(pools[split]) and set(actual) == pools[split]
+                assert len(actual) == len(expected) and set(actual) == expected
             info['parquet_identities_exact'] = True
         if args.native and kind == 'scienceworld':
             from scienceworld import ScienceWorldEnv
