@@ -213,6 +213,9 @@ class TrajectoryCollector:
             'index': item,
             'data_source': data_source
         })
+        for key in ('task_type', 'benchmark'):
+            if obs.get(key) is not None:
+                row_dict[key] = obs[key][item]
 
         if self.config.data.get('return_raw_chat', False):
             row_dict['raw_prompt'] = chat.tolist()
@@ -452,7 +455,8 @@ class TrajectoryCollector:
         batch_size = len(gen_batch.batch)
 
         # Initial observations from the environment
-        obs, infos = envs.reset(kwargs=gen_batch.non_tensor_batch.pop('env_kwargs', None))
+        # Keep explicit task identities for dynamic-filter retries of this batch.
+        obs, infos = envs.reset(kwargs=gen_batch.non_tensor_batch.get('env_kwargs', None))
 
         lenght_obs = len(obs['text']) if obs['text'] is not None else len(obs['image'])
         assert len(gen_batch.batch) == lenght_obs, f"gen_batch size {len(gen_batch.batch)} does not match obs size {lenght_obs}"

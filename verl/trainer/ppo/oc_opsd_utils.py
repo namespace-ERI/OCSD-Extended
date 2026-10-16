@@ -126,6 +126,13 @@ def build_action_schema(action: str, env_name: str) -> str:
 
     if "alfworld" in env:
         return _alfworld_schema(action)
+    elif "minihack" in env:
+        # Preserve movement direction, the entire executable action in this task.
+        direction = re.sub(r'</?answer>', '', action.lower()).strip()
+        allowed = {'north', 'east', 'south', 'west', 'northeast', 'southeast', 'southwest', 'northwest'}
+        return f'move {direction}' if direction in allowed else 'a movement action'
+    elif "scienceworld" in env:
+        return _scienceworld_schema(action)
     elif "webshop" in env:
         return _webshop_schema(action)
     elif "search" in env:
@@ -133,6 +140,27 @@ def build_action_schema(action: str, env_name: str) -> str:
     else:
         # Unknown environment — safe fallback, no information leakage.
         return "a future action"
+
+
+def _scienceworld_schema(action: str) -> str:
+    """Mask object names/answers while retaining the scientific operation."""
+    value = action.strip().lower()
+    if value in {'look around', 'inventory', 'task', 'wait', 'wait1'}:
+        return value
+    for prefix, schema in [
+        ('focus on ', 'focus on a target'), ('go to ', 'go to a location'),
+        ('look at ', 'look at an object'), ('move ', 'move an object to a container'),
+        ('pour ', 'pour a substance into a container'), ('use ', 'use a tool on a target'),
+        ('connect ', 'connect electrical components'), ('disconnect ', 'disconnect components'),
+        ('activate ', 'activate a device'), ('deactivate ', 'deactivate a device'),
+        ('pick up ', 'pick up an object'), ('open ', 'open a container'),
+        ('close ', 'close a container'), ('mix ', 'mix substances'),
+        ('eat ', 'eat an object'), ('read ', 'read an object'),
+        ('examine ', 'examine a target'), ('drop ', 'drop an object'),
+        ('dunk ', 'dunk an object in a substance'), ('flush ', 'flush a container')]:
+        if value.startswith(prefix):
+            return schema
+    return 'a scientific interaction'
 
 
 def _alfworld_schema(action: str) -> str:

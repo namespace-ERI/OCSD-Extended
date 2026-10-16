@@ -1,0 +1,250 @@
+{
+  "general_skills": [
+    {
+      "skill_id": "gen_001",
+      "title": "Observed minihack_room workflow 1",
+      "principle": "SafeExploratoryMove -> GoalTileDetection -> DirectMoveOntoGoal",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0750885745/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_002",
+      "title": "Observed minihack_room workflow 2",
+      "principle": "PerceiveGoalInPartialObservation -> MoveDirectlyOntoAdjacentGoalTile",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0357265649/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_003",
+      "title": "Observed minihack_room workflow 3",
+      "principle": "ExploreToRevealMap -> ApproachVisibleDownstairs -> StepOntoDownstairs",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0247881174/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_004",
+      "title": "Observed minihack_room workflow 4",
+      "principle": "ScanDungeonView -> LocateStairsRelativeToAgent -> MoveDirectlyTowardGoal",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0513776588/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_005",
+      "title": "Observed minihack_room workflow 5",
+      "principle": "ParseDungeonView -> LocateStairsRelativeToPlayer -> MoveDirectlyTowardStairs",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0704937174/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_006",
+      "title": "Observed minihack_room workflow 6",
+      "principle": "MoveIntoUnexploredSpace -> RevealMapAndDetectGoalTile -> StepDirectlyOntoGoalTile",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0512271361/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_007",
+      "title": "Observed minihack_room workflow 7",
+      "principle": "ObserveDungeonView -> LocateStaircaseRelativeToPlayer -> MoveDirectlyTowardGoalTile",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0779495258/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_008",
+      "title": "Observed minihack_room workflow 8",
+      "principle": "ExploratoryMoveToRevealMap -> MoveTowardVisibleDownstairs -> StepOntoDownstairsTile",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0823744701/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_009",
+      "title": "Observed minihack_room workflow 9",
+      "principle": "LocateGoalTileRelativeToAgent -> StepTowardGoalAlongSafeFloorTiles -> EnterGoalTile",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0105321713/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_010",
+      "title": "Observed minihack_room workflow 10",
+      "principle": "ParseDungeonViewToLocateStairs -> VerifyDirectPathAvoidsHazards -> ExecuteAdjacentMoveOntoStairs",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0330650471/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_011",
+      "title": "Observed minihack_room workflow 11",
+      "principle": "ScanPartialDungeonView -> LocateGoalTileRelativeToPlayer -> ExecuteDirectAdjacentMovementOntoGoal",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0568054227/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_012",
+      "title": "Observed minihack_room workflow 12",
+      "principle": "ScanPartialObservationForGoalTile -> SelectDirectAdjacentMoveTowardGoal -> ExecuteMoveOntoGoalTile",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0058201215/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_013",
+      "title": "Observed minihack_room workflow 13",
+      "principle": "ScanObservationForGoalTile -> StepTowardGoal -> ReorientWhenMoveIsBlockedByWall -> StepOntoGoalTile",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0183852435/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_014",
+      "title": "Observed minihack_room workflow 14",
+      "principle": "MoveInUnexploredDirection -> DetectDownstairsTile(>)InNewObservation -> StepDirectlyOntoDownstairsTile",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0169583236/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_015",
+      "title": "Observed minihack_room workflow 15",
+      "principle": "PerceiveGoalTileInLocalView -> ComputeDirectRelativeDirectionToGoal -> ExecuteAdjacentMoveOntoStairTile",
+      "when_to_apply": "Only for these task types, with matching prerequisites: room_navigation",
+      "evidence_episode_ids": [
+        "minihack_room/seed0148083460/r00"
+      ]
+    }
+  ],
+  "task_specific_skills": {
+    "room_navigation": [
+      {
+        "skill_id": "room_navigation_001",
+        "title": "Observed room_navigation workflow 1",
+        "principle": "SafeExploratoryMove -> GoalTileDetection -> DirectMoveOntoGoal",
+        "when_to_apply": "When solving a room_navigation task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "minihack_room/seed0750885745/r00"
+        ]
+      },
+      {
+        "skill_id": "room_navigation_002",
+        "title": "Observed room_navigation workflow 2",
+        "principle": "PerceiveGoalInPartialObservation -> MoveDirectlyOntoAdjacentGoalTile",
+        "when_to_apply": "When solving a room_navigation task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "minihack_room/seed0357265649/r00"
+        ]
+      },
+      {
+        "skill_id": "room_navigation_003",
+        "title": "Observed room_navigation workflow 3",
+        "principle": "ExploreToRevealMap -> ApproachVisibleDownstairs -> StepOntoDownstairs",
+        "when_to_apply": "When solving a room_navigation task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "minihack_room/seed0247881174/r00"
+        ]
+      },
+      {
+        "skill_id": "room_navigation_004",
+        "title": "Observed room_navigation workflow 4",
+        "principle": "ScanDungeonView -> LocateStairsRelativeToAgent -> MoveDirectlyTowardGoal",
+        "when_to_apply": "When solving a room_navigation task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "minihack_room/seed0513776588/r00"
+        ]
+      },
+      {
+        "skill_id": "room_navigation_005",
+        "title": "Observed room_navigation workflow 5",
+        "principle": "ParseDungeonView -> LocateStairsRelativeToPlayer -> MoveDirectlyTowardStairs",
+        "when_to_apply": "When solving a room_navigation task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "minihack_room/seed0704937174/r00"
+        ]
+      },
+      {
+        "skill_id": "room_navigation_006",
+        "title": "Observed room_navigation workflow 6",
+        "principle": "MoveIntoUnexploredSpace -> RevealMapAndDetectGoalTile -> StepDirectlyOntoGoalTile",
+        "when_to_apply": "When solving a room_navigation task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "minihack_room/seed0512271361/r00"
+        ]
+      }
+    ]
+  },
+  "common_mistakes": [
+    {
+      "mistake_id": "err_001",
+      "description": "{\"bad_action\": \"Spending actions engaging with and picking up the corpse rather than treating navigation to the unseen goal as the priority.\", \"trigger_condition\": \"Distracting entities (a jackal, its corpse) appear in the room during navigation.\"}",
+      "how_to_avoid": "Check the observed feedback and avoid repeating this demonstrated failure.",
+      "evidence_episode_ids": [
+        "minihack_room/seed0935950639/r00"
+      ]
+    },
+    {
+      "mistake_id": "err_002",
+      "description": "{\"bad_action\": \"Wandering further from the remembered staircase position (e.g., Northeast, East, North along the room edge) without re-pathing directly back toward it.\", \"trigger_condition\": \"The > tile's location has already been observed, but the agent has drifted away from it into other parts of the room.\"}",
+      "how_to_avoid": "Check the observed feedback and avoid repeating this demonstrated failure.",
+      "evidence_episode_ids": [
+        "minihack_room/seed0070257689/r00"
+      ]
+    },
+    {
+      "mistake_id": "err_003",
+      "description": "{\"bad_action\": \"Repeating the same blocked direction on subsequent turns (e.g., South, then South again), wasting turns that give the monster free attacks and drain HP\", \"trigger_condition\": \"A movement attempt returns 'It's solid stone' (blocked by a wall), especially while a monster is adjacent and attacking each turn\"}",
+      "how_to_avoid": "Check the observed feedback and avoid repeating this demonstrated failure.",
+      "evidence_episode_ids": [
+        "minihack_room/seed0653030850/r00"
+      ]
+    },
+    {
+      "mistake_id": "err_004",
+      "description": "{\"bad_action\": \"Continuing unproductive wandering and wall-bumping until the environment terminates (as at step 30 with won=false), so the episode ends before the downstairs is ever located.\", \"trigger_condition\": \"Steps are being consumed with no progress (no '>' observed, reward 0) and the episode has a finite step budget.\"}",
+      "how_to_avoid": "Check the observed feedback and avoid repeating this demonstrated failure.",
+      "evidence_episode_ids": [
+        "minihack_room/seed0579708537/r00"
+      ]
+    },
+    {
+      "mistake_id": "err_005",
+      "description": "{\"bad_action\": \"Stepping directly into positions adjacent to grid bugs and absorbing repeated zaps (steps 3-5) when the bugs are not blocking the only route. Instead, prefer routing around hazards and engage them only when they physically obstruct the path to the goal.\", \"trigger_condition\": \"Grid bugs are adjacent to the agent's path and moving next to them triggers 'You get zapped!' messages.\"}",
+      "how_to_avoid": "Check the observed feedback and avoid repeating this demonstrated failure.",
+      "evidence_episode_ids": [
+        "minihack_room/seed0649650611/r00"
+      ]
+    }
+  ],
+  "metadata": {
+    "selection_policy": "first_rollout_r00",
+    "total_strategies_analyzed": 1000,
+    "successes": 587,
+    "source_model": "glm53_512k_o64k_pd128_coding",
+    "compilation": "deterministic_diverse_verbatim_excerpts_v1",
+    "general_budget": 15,
+    "category_budget": 6,
+    "categories_without_success_evidence": [],
+    "training_manifest_sha256": "c75a34ceb020dc605c76d47f7d06700ac6c489c2eb7093e409b47a148ae9a97d"
+  }
+}

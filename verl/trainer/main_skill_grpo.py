@@ -210,9 +210,15 @@ class SkillTrajectoryCollector:
         obs_texts = obs.get("text", None)
         if obs_texts is None:
             return obs
+        obs = dict(obs)
+        obs_texts = list(obs_texts)
+        obs['text'] = obs_texts
         for i in range(len(obs_texts)):
             if obs_texts[i] is not None:
-                skill_text = self.skill_provider.get_privileged_info_from_prompt(obs_texts[i])
+                if obs.get('task_type') is not None:
+                    skill_text = self.skill_provider.get_privileged_info_from_task_type(obs['task_type'][i])
+                else:
+                    skill_text = self.skill_provider.get_privileged_info_from_prompt(obs_texts[i])
                 if skill_text:
                     obs_texts[i] = f"[Privileged Skill Information]\n{skill_text}\n\n{obs_texts[i]}"
         return obs

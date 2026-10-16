@@ -1,0 +1,811 @@
+{
+  "general_skills": [
+    {
+      "skill_id": "gen_001",
+      "title": "Observed scienceworld workflow 1",
+      "principle": "LookAround -> FocusOnTargetObject",
+      "when_to_apply": "Only for these task types, with matching prerequisites: grow-fruit",
+      "evidence_episode_ids": [
+        "scienceworld/t10_v0052/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_002",
+      "title": "Observed scienceworld workflow 2",
+      "principle": "TeleportToLocationNamedInTask -> FocusOnTargetObjectMatchingTaskCriterion",
+      "when_to_apply": "Only for these task types, with matching prerequisites: lifespan-shortest-lived",
+      "evidence_episode_ids": [
+        "scienceworld/t19_v0049/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_003",
+      "title": "Observed scienceworld workflow 3",
+      "principle": "look around -> go to workshop -> focus on the inclined plane with the most friction",
+      "when_to_apply": "Only for these task types, with matching prerequisites: inclined-plane-friction-named-surfaces",
+      "evidence_episode_ids": [
+        "scienceworld/t15_v0000/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_004",
+      "title": "Observed scienceworld workflow 4",
+      "principle": "TeleportToTaskRoom -> FocusOnMeasuringInstrument -> FocusOnTargetSubstance -> FocusOnAnswerObjectSelectedByMeasuredProperty",
+      "when_to_apply": "Only for these task types, with matching prerequisites: measure-melting-point-known-substance",
+      "evidence_episode_ids": [
+        "scienceworld/t20_v0138/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_005",
+      "title": "Observed scienceworld workflow 5",
+      "principle": "NavigateTo(task_relevant_room) -> FocusOn(measurement_instrument/thermometer) -> FocusOn(target_substance) -> FocusOn(answer_box_matching_comparison_result)",
+      "when_to_apply": "Only for these task types, with matching prerequisites: measure-melting-point-known-substance",
+      "evidence_episode_ids": [
+        "scienceworld/t20_v0036/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_006",
+      "title": "Observed scienceworld workflow 6",
+      "principle": "select a task-qualifying object already visible in the current room's initial observation (e.g., a clearly non-living object) -> focus on <that object> -> move <that object> to <the specified destination container in the same room>",
+      "when_to_apply": "Only for these task types, with matching prerequisites: find-non-living-thing",
+      "evidence_episode_ids": [
+        "scienceworld/t07_v0059/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_007",
+      "title": "Observed scienceworld workflow 7",
+      "principle": "FocusOnTargetObject -> PickUpTargetObject -> TeleportToDestinationRoom -> MoveObjectToTargetContainer -> FocusOnTargetObject (final confirmation to trigger task completion)",
+      "when_to_apply": "Only for these task types, with matching prerequisites: find-non-living-thing",
+      "evidence_episode_ids": [
+        "scienceworld/t07_v0083/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_008",
+      "title": "Observed scienceworld workflow 8",
+      "principle": "LookAround -> LookAt(target door) -> GoTo(greenhouse) -> FocusOn(the box matching the dominance determination for this instance)",
+      "when_to_apply": "Only for these task types, with matching prerequisites: mendelian-genetics-unknown-plant",
+      "evidence_episode_ids": [
+        "scienceworld/t24_v0168/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_009",
+      "title": "Observed scienceworld workflow 9",
+      "principle": "look around (survey the specified location) -> look at [candidate object] (examine an animal found there) -> focus on [object matching the task criterion] (focus on the animal satisfying the lifespan condition)",
+      "when_to_apply": "Only for these task types, with matching prerequisites: lifespan-shortest-lived",
+      "evidence_episode_ids": [
+        "scienceworld/t19_v0017/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_010",
+      "title": "Observed scienceworld workflow 10",
+      "principle": "focus on thermometer (measuring instrument) -> focus on target substance (lead) -> focus on the answer box selected by comparing the substance's melting point against the stated reference temperature (above the threshold -> one box, below -> the other box)",
+      "when_to_apply": "Only for these task types, with matching prerequisites: measure-melting-point-known-substance",
+      "evidence_episode_ids": [
+        "scienceworld/t20_v0102/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_011",
+      "title": "Observed scienceworld workflow 11",
+      "principle": "go to greenhouse (location containing the answer boxes) -> focus on the box that matches the determined inheritance conclusion for the unknown plant's trait (green box if the trait is dominant, blue box if the trait is recessive)",
+      "when_to_apply": "Only for these task types, with matching prerequisites: mendelian-genetics-unknown-plant",
+      "evidence_episode_ids": [
+        "scienceworld/t24_v0028/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_012",
+      "title": "Observed scienceworld workflow 12",
+      "principle": "look at each candidate inclined plane (both unnamed surfaces) -> activate the stopwatch -> focus on the inclined plane concluded to have the least friction (the terminal answer action that scores the task)",
+      "when_to_apply": "Only for these task types, with matching prerequisites: inclined-plane-friction-unnamed-surfaces",
+      "evidence_episode_ids": [
+        "scienceworld/t16_v0059/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_013",
+      "title": "Observed scienceworld workflow 13",
+      "principle": "navigate to the task-specified location (routing through a connected intermediate room when no direct door exists from the current room) -> look around to enumerate the candidate objects present -> focus on the single object that satisfies the task criterion, selecting it via domain knowledge when simple inspection returns no distinguishing information",
+      "when_to_apply": "Only for these task types, with matching prerequisites: lifespan-longest-lived",
+      "evidence_episode_ids": [
+        "scienceworld/t17_v0000/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_014",
+      "title": "Observed scienceworld workflow 14",
+      "principle": "look at each named candidate object -> look at the remaining candidate object -> focus on the candidate that answers the task question (here, the inclined plane with the most friction; the correct surface is instance-specific and must not be assumed as a universal material property)",
+      "when_to_apply": "Only for these task types, with matching prerequisites: inclined-plane-friction-named-surfaces",
+      "evidence_episode_ids": [
+        "scienceworld/t15_v0658/r00"
+      ]
+    },
+    {
+      "skill_id": "gen_015",
+      "title": "Observed scienceworld workflow 15",
+      "principle": "Parse the goal for the target location and selection criterion -> Teleport directly to the specified location ('outside') -> Focus on the object satisfying the criterion (the animal with the shortest life span, e.g., the ant)",
+      "when_to_apply": "Only for these task types, with matching prerequisites: lifespan-shortest-lived",
+      "evidence_episode_ids": [
+        "scienceworld/t19_v0048/r00"
+      ]
+    }
+  ],
+  "task_specific_skills": {
+    "boil": [],
+    "change-the-state-of-matter-of": [],
+    "chemistry-mix": [],
+    "chemistry-mix-paint-secondary-color": [],
+    "chemistry-mix-paint-tertiary-color": [],
+    "find-animal": [],
+    "find-living-thing": [],
+    "find-non-living-thing": [
+      {
+        "skill_id": "find-non-living-thing_001",
+        "title": "Observed find-non-living-thing workflow 1",
+        "principle": "focus on <non-living thing> -> move <non-living thing> to workshop -> go to workshop -> move <non-living thing> to yellow box",
+        "when_to_apply": "When solving a find-non-living-thing task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t07_v0058/r00"
+        ]
+      },
+      {
+        "skill_id": "find-non-living-thing_002",
+        "title": "Observed find-non-living-thing workflow 2",
+        "principle": "FocusOnTargetObject -> PickUpTargetObject -> TeleportToDestinationRoom -> MoveObjectToTargetContainer -> FocusOnTargetObject (final confirmation to trigger task completion)",
+        "when_to_apply": "When solving a find-non-living-thing task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t07_v0083/r00"
+        ]
+      },
+      {
+        "skill_id": "find-non-living-thing_003",
+        "title": "Observed find-non-living-thing workflow 3",
+        "principle": "select a task-qualifying object already visible in the current room's initial observation (e.g., a clearly non-living object) -> focus on <that object> -> move <that object> to <the specified destination container in the same room>",
+        "when_to_apply": "When solving a find-non-living-thing task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t07_v0059/r00"
+        ]
+      },
+      {
+        "skill_id": "find-non-living-thing_004",
+        "title": "Observed find-non-living-thing workflow 4",
+        "principle": "focus on target object (identifies the correct non-living thing, large score gain) -> move target object to destination room -> go to destination room -> move target object into the specified container (purple box) -> focus on target object again to confirm completion and trigger task success",
+        "when_to_apply": "When solving a find-non-living-thing task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t07_v0113/r00"
+        ]
+      },
+      {
+        "skill_id": "find-non-living-thing_005",
+        "title": "Observed find-non-living-thing workflow 5",
+        "principle": "Scan the initial room's visible object list for an item matching the task's semantic category (here, a non-living thing, e.g., the painting) -> focus on that category-matching object -> move the focused object to the specified destination container (the colored box in the named room)",
+        "when_to_apply": "When solving a find-non-living-thing task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t07_v0130/r00"
+        ]
+      },
+      {
+        "skill_id": "find-non-living-thing_006",
+        "title": "Observed find-non-living-thing workflow 6",
+        "principle": "select a clearly non-living object already visible in the starting room (no exploration needed) -> focus on <selected non-living object> -> move <selected non-living object> to <task-specified destination box>",
+        "when_to_apply": "When solving a find-non-living-thing task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t07_v0141/r00"
+        ]
+      }
+    ],
+    "find-plant": [],
+    "freeze": [],
+    "grow-fruit": [
+      {
+        "skill_id": "grow-fruit_001",
+        "title": "Observed grow-fruit workflow 1",
+        "principle": "LookAround -> FocusOnTargetObject",
+        "when_to_apply": "When solving a grow-fruit task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t10_v0052/r00"
+        ]
+      },
+      {
+        "skill_id": "grow-fruit_002",
+        "title": "Observed grow-fruit workflow 2",
+        "principle": "look around -> go to kitchen -> look around -> focus on target fruit (in this episode the target fruit already existed in the bowl on the kitchen counter, and focusing on it won the task immediately — no plant-growing or cross-pollination steps were needed; the move to the kitchen itself also earned partial reward)",
+        "when_to_apply": "When solving a grow-fruit task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t10_v0013/r00"
+        ]
+      },
+      {
+        "skill_id": "grow-fruit_003",
+        "title": "Observed grow-fruit workflow 3",
+        "principle": "Parse the goal statement for the explicitly stated completion action and target object ('focus on the grown apple') -> Check the initial observation for whether the target object is already present (in this episode, the apple was already visible in the bowl on the kitchen counter) -> If present, execute the focus action directly on the target object, skipping the narrative prerequisite procedures (finding seeds in the bedroom, planting, growing, cross-pollination); the single 'focus on apple' action on the already-present target was admissible, effective, and achieved the full score of 100 with immediate termination. Limit of evidence: this episode demonstrates nothing about how to proceed if the target object is not already visible in the starting room, since no growing or pollination steps were ever executed or observed.",
+        "when_to_apply": "When solving a grow-fruit task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t10_v0011/r00"
+        ]
+      }
+    ],
+    "grow-plant": [],
+    "identify-life-stages-1": [],
+    "identify-life-stages-2": [],
+    "inclined-plane-determine-angle": [
+      {
+        "skill_id": "inclined-plane-determine-angle_001",
+        "title": "Observed inclined-plane-determine-angle workflow 1",
+        "principle": "look at first candidate inclined plane -> look at second candidate inclined plane -> focus on the inclined plane determined to have the steepest angle (the task's answer object)",
+        "when_to_apply": "When solving a inclined-plane-determine-angle task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t14_v0005/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-determine-angle_002",
+        "title": "Observed inclined-plane-determine-angle workflow 2",
+        "principle": "look around (survey starting room) -> open closed containers (e.g., closet) and inspect their contents -> look in hallway to discover connected rooms -> teleport to workshop (where the inclined planes are located) -> focus on the inclined plane determined to have the steepest angle (answer is task-instance dependent, not a fixed letter)",
+        "when_to_apply": "When solving a inclined-plane-determine-angle task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t14_v0033/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-determine-angle_003",
+        "title": "Observed inclined-plane-determine-angle workflow 3",
+        "principle": "observe surroundings to orient -> navigate to the room containing the task objects (here, the workshop, where the inclined planes are located) -> focus on the object that satisfies the task's answer condition (the inclined plane determined to have the shallowest angle). Note: this trajectory contains no explicit measurement or comparison step; the task was completed by directly focusing on the correct answer object, and the specific answer (plane D) is task-instance-specific and should not be generalized.",
+        "when_to_apply": "When solving a inclined-plane-determine-angle task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t14_v0058/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-determine-angle_004",
+        "title": "Observed inclined-plane-determine-angle workflow 4",
+        "principle": "look around to orient in the starting room (hallway) -> go to workshop, the room containing the task apparatus (the inclined planes) -> focus on the inclined plane with the steepest angle (the correct answer object for this task instance)",
+        "when_to_apply": "When solving a inclined-plane-determine-angle task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t14_v0007/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-determine-angle_005",
+        "title": "Observed inclined-plane-determine-angle workflow 5",
+        "principle": "LookAround (orient in starting room, may be a no-op) -> GoToRoomContainingTaskApparatus (here: 'go to workshop', where the inclined planes are located) -> FocusOnAnswerObject (focus on the object that satisfies the task question, here the inclined plane determined to have the steepest angle; the specific correct object is task-instance dependent, not a fixed label)",
+        "when_to_apply": "When solving a inclined-plane-determine-angle task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t14_v0039/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-determine-angle_006",
+        "title": "Observed inclined-plane-determine-angle workflow 6",
+        "principle": "look at first candidate object (inclined plane) -> look at second candidate object (inclined plane) -> focus on the candidate that satisfies the task criterion (the inclined plane with the shallowest angle), where the focus command on the correct object is the terminal action that completes the task and awards the remaining score. Caveat from this episode: the 'look' observations returned only the object names ('an inclined plane E' / 'an inclined plane F') with no angle information, and no measurement experiment (e.g., timing a sliding object with the stopwatch or brick) was performed; the discriminating evidence was not observed, so the selection had to be committed at the focus step. Repeated 'look' calls on the same objects were redundant and added no information. The specific answer (plane E) is instance-specific and must not be treated as a universal rule for this task category.",
+        "when_to_apply": "When solving a inclined-plane-determine-angle task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t14_v0074/r00"
+        ]
+      }
+    ],
+    "inclined-plane-friction-named-surfaces": [
+      {
+        "skill_id": "inclined-plane-friction-named-surfaces_001",
+        "title": "Observed inclined-plane-friction-named-surfaces workflow 1",
+        "principle": "look around -> go to workshop -> focus on the inclined plane with the most friction",
+        "when_to_apply": "When solving a inclined-plane-friction-named-surfaces task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t15_v0000/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-friction-named-surfaces_002",
+        "title": "Observed inclined-plane-friction-named-surfaces workflow 2",
+        "principle": "LookAt(candidate object 1) -> LookAt(candidate object 2) -> FocusOn(the object satisfying the task criterion)",
+        "when_to_apply": "When solving a inclined-plane-friction-named-surfaces task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t15_v0263/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-friction-named-surfaces_003",
+        "title": "Observed inclined-plane-friction-named-surfaces workflow 3",
+        "principle": "LookAround -> GoToWorkshop -> FocusOnAnswerObject (navigate to the workshop where the inclined planes are located, then focus on the inclined plane whose surface corresponds to the correct friction answer for this task instance)",
+        "when_to_apply": "When solving a inclined-plane-friction-named-surfaces task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t15_v0366/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-friction-named-surfaces_004",
+        "title": "Observed inclined-plane-friction-named-surfaces workflow 4",
+        "principle": "Look at first candidate object -> Look at second candidate object -> Focus on the object that matches the task's target property (the answer)",
+        "when_to_apply": "When solving a inclined-plane-friction-named-surfaces task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t15_v0590/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-friction-named-surfaces_005",
+        "title": "Observed inclined-plane-friction-named-surfaces workflow 5",
+        "principle": "look around (orient in starting room; harmless no-op) -> go to workshop (navigate to the room containing the inclined-plane apparatus) -> focus on the inclined plane with the least-friction surface (designate the answer object; the winning surface material is instance-specific — here it was bronze, but this mapping must not be treated as a universal rule)",
+        "when_to_apply": "When solving a inclined-plane-friction-named-surfaces task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t15_v0459/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-friction-named-surfaces_006",
+        "title": "Observed inclined-plane-friction-named-surfaces workflow 6",
+        "principle": "examine the candidate inclined planes (look at each surface object) -> focus on the inclined plane determined to have the least friction, using the focus command as the final answer submission",
+        "when_to_apply": "When solving a inclined-plane-friction-named-surfaces task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t15_v0527/r00"
+        ]
+      }
+    ],
+    "inclined-plane-friction-unnamed-surfaces": [
+      {
+        "skill_id": "inclined-plane-friction-unnamed-surfaces_001",
+        "title": "Observed inclined-plane-friction-unnamed-surfaces workflow 1",
+        "principle": "look at each candidate inclined plane (both unnamed surfaces) -> activate the stopwatch -> focus on the inclined plane concluded to have the least friction (the terminal answer action that scores the task)",
+        "when_to_apply": "When solving a inclined-plane-friction-unnamed-surfaces task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t16_v0059/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-friction-unnamed-surfaces_002",
+        "title": "Observed inclined-plane-friction-unnamed-surfaces workflow 2",
+        "principle": "look around (orient in the starting hallway) -> go to workshop (the room containing the two inclined planes) -> focus on the inclined plane with the least-friction surface (the correct target plane, which is instance-specific — here it was the unknown material B surface, but the answer mapping varies per task instance)",
+        "when_to_apply": "When solving a inclined-plane-friction-unnamed-surfaces task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t16_v0041/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-friction-unnamed-surfaces_003",
+        "title": "Observed inclined-plane-friction-unnamed-surfaces workflow 3",
+        "principle": "look around (initial orientation) -> go to workshop (room containing the task's inclined planes) -> focus on the inclined plane whose surface has the least friction (the correct answer object for this task instance)",
+        "when_to_apply": "When solving a inclined-plane-friction-unnamed-surfaces task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t16_v0007/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-friction-unnamed-surfaces_004",
+        "title": "Observed inclined-plane-friction-unnamed-surfaces workflow 4",
+        "principle": "look around (orientation, no effect) -> go to workshop (the room containing the two inclined planes; +10) -> focus on the inclined plane with the most friction (terminal answer action; +90, task won). Note: in this instance the winning surface was the unknown material C plane, and no intermediate sliding experiment was observed — the focus command on the correct plane itself completed the task. The correct material is instance-specific and must not be hardcoded as a rule.",
+        "when_to_apply": "When solving a inclined-plane-friction-unnamed-surfaces task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t16_v0036/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-friction-unnamed-surfaces_005",
+        "title": "Observed inclined-plane-friction-unnamed-surfaces workflow 5",
+        "principle": "look around to orient in the starting room (hallway) -> go to workshop, the room containing the task objects (the two inclined planes) -> focus on the inclined plane that satisfies the task criterion (the one with the least friction); in this episode, focusing on the correct plane directly completed the task and awarded the terminal score, with the correct target varying per instance (here it was the unknown material F surface, but this must not be treated as a universal answer)",
+        "when_to_apply": "When solving a inclined-plane-friction-unnamed-surfaces task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t16_v0071/r00"
+        ]
+      },
+      {
+        "skill_id": "inclined-plane-friction-unnamed-surfaces_006",
+        "title": "Observed inclined-plane-friction-unnamed-surfaces workflow 6",
+        "principle": "look around (orientation; admissible but non-scoring) -> go to workshop (navigate to the room containing the two inclined planes; earns progress) -> focus on the inclined plane with the most friction (designates the answer object and completes the task). Caveats grounded in this episode: the winning plane's material is instance-specific (here it was the unknown material B plane) and must never be assumed as a universal answer; additionally, this trajectory contained no explicit friction-measurement experiment, so the correct plane was designated directly via focus — how to determine the higher-friction plane is not demonstrated by this episode.",
+        "when_to_apply": "When solving a inclined-plane-friction-unnamed-surfaces task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t16_v0058/r00"
+        ]
+      }
+    ],
+    "lifespan-longest-lived": [
+      {
+        "skill_id": "lifespan-longest-lived_001",
+        "title": "Observed lifespan-longest-lived workflow 1",
+        "principle": "look around (survey the specified location and enumerate candidate objects/animals) -> look at <candidate object> (verify the object's exact name/identity) -> focus on <target object> (submit the answer by focusing on the determined target)",
+        "when_to_apply": "When solving a lifespan-longest-lived task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t17_v0016/r00"
+        ]
+      },
+      {
+        "skill_id": "lifespan-longest-lived_002",
+        "title": "Observed lifespan-longest-lived workflow 2",
+        "principle": "navigate to the task-specified location (routing through a connected intermediate room when no direct door exists from the current room) -> look around to enumerate the candidate objects present -> focus on the single object that satisfies the task criterion, selecting it via domain knowledge when simple inspection returns no distinguishing information",
+        "when_to_apply": "When solving a lifespan-longest-lived task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t17_v0000/r00"
+        ]
+      },
+      {
+        "skill_id": "lifespan-longest-lived_003",
+        "title": "Observed lifespan-longest-lived workflow 3",
+        "principle": "look around (survey the task location) -> look at {candidate object 1} -> look at {candidate object 2} -> ... -> look at {candidate object n} (inspect every animal-related object present, including eggs/baby animals, using partial object names if needed) -> focus on {the candidate that matches the task criterion, e.g., longest life span}",
+        "when_to_apply": "When solving a lifespan-longest-lived task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t17_v0028/r00"
+        ]
+      },
+      {
+        "skill_id": "lifespan-longest-lived_004",
+        "title": "Observed lifespan-longest-lived workflow 4",
+        "principle": "teleport directly to the task-specified location (e.g., 'outside') -> look around to enumerate the candidate objects (the animals present) -> look at each candidate to confirm its identity -> focus on the single candidate that satisfies the task criterion (here, the animal whose species has the longest life span among those observed, chosen by comparing the actual candidates rather than assuming a fixed answer)",
+        "when_to_apply": "When solving a lifespan-longest-lived task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t17_v0049/r00"
+        ]
+      }
+    ],
+    "lifespan-longest-lived-then-shortest-lived": [
+      {
+        "skill_id": "lifespan-longest-lived-then-shortest-lived_001",
+        "title": "Observed lifespan-longest-lived-then-shortest-lived workflow 1",
+        "principle": "teleport to the task-specified location -> look around to enumerate the candidate objects present -> focus on the object matching the first requested criterion (longest life span) -> focus on the object matching the second requested criterion (shortest life span)",
+        "when_to_apply": "When solving a lifespan-longest-lived-then-shortest-lived task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t18_v0022/r00"
+        ]
+      }
+    ],
+    "lifespan-shortest-lived": [
+      {
+        "skill_id": "lifespan-shortest-lived_001",
+        "title": "Observed lifespan-shortest-lived workflow 1",
+        "principle": "TeleportToLocationNamedInTask -> FocusOnTargetObjectMatchingTaskCriterion",
+        "when_to_apply": "When solving a lifespan-shortest-lived task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t19_v0049/r00"
+        ]
+      },
+      {
+        "skill_id": "lifespan-shortest-lived_002",
+        "title": "Observed lifespan-shortest-lived workflow 2",
+        "principle": "look around (survey the specified location) -> look at [candidate object] (examine an animal found there) -> focus on [object matching the task criterion] (focus on the animal satisfying the lifespan condition)",
+        "when_to_apply": "When solving a lifespan-shortest-lived task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t19_v0017/r00"
+        ]
+      },
+      {
+        "skill_id": "lifespan-shortest-lived_003",
+        "title": "Observed lifespan-shortest-lived workflow 3",
+        "principle": "Parse the goal for the target location and selection criterion -> Teleport directly to the specified location ('outside') -> Focus on the object satisfying the criterion (the animal with the shortest life span, e.g., the ant)",
+        "when_to_apply": "When solving a lifespan-shortest-lived task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t19_v0048/r00"
+        ]
+      },
+      {
+        "skill_id": "lifespan-shortest-lived_004",
+        "title": "Observed lifespan-shortest-lived workflow 4",
+        "principle": "teleport to the location named in the goal -> look around to enumerate the candidate objects present in that location -> select the candidate that matches the task criterion by applying domain knowledge about the queried property -> focus on the selected object to submit the answer",
+        "when_to_apply": "When solving a lifespan-shortest-lived task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t19_v0060/r00"
+        ]
+      },
+      {
+        "skill_id": "lifespan-shortest-lived_005",
+        "title": "Observed lifespan-shortest-lived workflow 5",
+        "principle": "go to <task-specified location> -> look around to enumerate candidate objects -> look at each candidate object to confirm its exact in-game name -> focus on the candidate that satisfies the task criterion (chosen via domain knowledge, e.g., the mouse has a shorter lifespan than a beaver)",
+        "when_to_apply": "When solving a lifespan-shortest-lived task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t19_v0043/r00"
+        ]
+      },
+      {
+        "skill_id": "lifespan-shortest-lived_006",
+        "title": "Observed lifespan-shortest-lived workflow 6",
+        "principle": "navigate from starting room to hallway (central hub connecting all rooms) -> teleport to the task-specified location ('outside') when direct 'go to' movement is not admissible -> look around to enumerate the candidate objects (animals) present -> focus on the candidate object matching the task's target property (the animal with the shortest life span), using the object's full in-game name including its descriptor (e.g., 'baby')",
+        "when_to_apply": "When solving a lifespan-shortest-lived task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t19_v0035/r00"
+        ]
+      }
+    ],
+    "measure-melting-point-known-substance": [
+      {
+        "skill_id": "measure-melting-point-known-substance_001",
+        "title": "Observed measure-melting-point-known-substance workflow 1",
+        "principle": "TeleportToTaskRoom -> FocusOnMeasuringInstrument -> FocusOnTargetSubstance -> FocusOnAnswerObjectSelectedByMeasuredProperty",
+        "when_to_apply": "When solving a measure-melting-point-known-substance task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t20_v0138/r00"
+        ]
+      },
+      {
+        "skill_id": "measure-melting-point-known-substance_002",
+        "title": "Observed measure-melting-point-known-substance workflow 2",
+        "principle": "NavigateTo(task_relevant_room) -> FocusOn(measurement_instrument/thermometer) -> FocusOn(target_substance) -> FocusOn(answer_box_matching_comparison_result)",
+        "when_to_apply": "When solving a measure-melting-point-known-substance task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t20_v0036/r00"
+        ]
+      },
+      {
+        "skill_id": "measure-melting-point-known-substance_003",
+        "title": "Observed measure-melting-point-known-substance workflow 3",
+        "principle": "focus on thermometer -> focus on the target substance -> focus on the box corresponding to the melting point comparison (above-threshold box or below-threshold box, as specified by the task's conditional)",
+        "when_to_apply": "When solving a measure-melting-point-known-substance task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t20_v0160/r00"
+        ]
+      },
+      {
+        "skill_id": "measure-melting-point-known-substance_004",
+        "title": "Observed measure-melting-point-known-substance workflow 4",
+        "principle": "go_to_room_containing_task_objects -> focus_on_measurement_instrument -> focus_on_target_substance -> focus_on_answer_object_selected_by_comparing_measured_property_to_task_threshold",
+        "when_to_apply": "When solving a measure-melting-point-known-substance task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t20_v0083/r00"
+        ]
+      },
+      {
+        "skill_id": "measure-melting-point-known-substance_005",
+        "title": "Observed measure-melting-point-known-substance workflow 5",
+        "principle": "TeleportToTaskLocation (kitchen, where the thermometer, substance, and answer boxes reside) -> FocusOnMeasurementInstrument (focus on thermometer) -> FocusOnTargetSubstance (focus on lead) -> EvaluateThresholdCondition (use the substance's known melting point — lead melts far above -10.0 degrees celsius — to select the correct branch) -> FocusOnAnswerObject (focus on the orange box for 'above threshold')",
+        "when_to_apply": "When solving a measure-melting-point-known-substance task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t20_v0210/r00"
+        ]
+      },
+      {
+        "skill_id": "measure-melting-point-known-substance_006",
+        "title": "Observed measure-melting-point-known-substance workflow 6",
+        "principle": "go to <room named in task goal> -> focus on thermometer -> focus on <target substance> -> focus on <answer box whose color matches the melting-point comparison stated in the goal>",
+        "when_to_apply": "When solving a measure-melting-point-known-substance task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t20_v0130/r00"
+        ]
+      }
+    ],
+    "measure-melting-point-unknown-substance": [
+      {
+        "skill_id": "measure-melting-point-unknown-substance_001",
+        "title": "Observed measure-melting-point-unknown-substance workflow 1",
+        "principle": "navigate to the room containing the task objects -> focus on the measurement instrument (thermometer) -> focus on the target unknown substance -> focus on the answer object (box) that corresponds to the measured melting point relative to the task's stated threshold",
+        "when_to_apply": "When solving a measure-melting-point-unknown-substance task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t21_v0036/r00"
+        ]
+      },
+      {
+        "skill_id": "measure-melting-point-unknown-substance_002",
+        "title": "Observed measure-melting-point-unknown-substance workflow 2",
+        "principle": "NavigateToTaskRoom (go to kitchen where thermometer, substance, and boxes are located) -> FocusOnMeasurementInstrument (focus on thermometer) -> FocusOnTargetSubstance (focus on the solid unknown substance) -> FocusOnAnswerBoxMatchingComparison (focus on the box corresponding to whether the measured melting point is above or below the stated threshold)",
+        "when_to_apply": "When solving a measure-melting-point-unknown-substance task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t21_v0013/r00"
+        ]
+      },
+      {
+        "skill_id": "measure-melting-point-unknown-substance_003",
+        "title": "Observed measure-melting-point-unknown-substance workflow 3",
+        "principle": "navigate to the room containing the task objects (go to kitchen) -> focus on the measuring instrument (thermometer) -> focus on the target substance (liquid unknown substance) -> focus on the answer object selected by the task's conditional rule based on the measured property (melting point relative to the stated threshold, e.g., above/below 50.0 degrees celsius maps to one of the two boxes)",
+        "when_to_apply": "When solving a measure-melting-point-unknown-substance task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t21_v0062/r00"
+        ]
+      },
+      {
+        "skill_id": "measure-melting-point-unknown-substance_004",
+        "title": "Observed measure-melting-point-unknown-substance workflow 4",
+        "principle": "navigate directly to the room containing the task objects (teleport to kitchen) -> focus on the thermometer -> focus on the target solid unknown substance -> focus on the box that matches the measured melting point relative to the 50.0 degrees celsius threshold (blue box if above, orange box if below)",
+        "when_to_apply": "When solving a measure-melting-point-unknown-substance task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t21_v0038/r00"
+        ]
+      },
+      {
+        "skill_id": "measure-melting-point-unknown-substance_005",
+        "title": "Observed measure-melting-point-unknown-substance workflow 5",
+        "principle": "navigate to the room containing the task objects (go to kitchen) -> focus on the measuring instrument (thermometer) -> focus on the target substance (solid unknown substance) -> focus on the answer box matching the substance's melting point relative to the 200 degrees celsius threshold (green box if above, blue box if below). Note: in this task the ordered focus commands themselves drove the score (thermometer focus +33, substance focus +34, correct box focus +28 to 100); no physical heating or experimental procedure was needed or performed, and the box choice must be re-derived from the goal's threshold rule each episode rather than memorized from this instance's correct answer (green).",
+        "when_to_apply": "When solving a measure-melting-point-unknown-substance task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t21_v0118/r00"
+        ]
+      },
+      {
+        "skill_id": "measure-melting-point-unknown-substance_006",
+        "title": "Observed measure-melting-point-unknown-substance workflow 6",
+        "principle": "navigate_to_room_containing_task_objects -> focus_on_measurement_instrument (thermometer) -> focus_on_target_substance (the unknown substance to be measured) -> focus_on_answer_object_matching_measured_property (select the box corresponding to whether the measured melting point is above or below the stated threshold)",
+        "when_to_apply": "When solving a measure-melting-point-unknown-substance task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t21_v0105/r00"
+        ]
+      }
+    ],
+    "melt": [],
+    "mendelian-genetics-known-plant": [
+      {
+        "skill_id": "mendelian-genetics-known-plant_001",
+        "title": "Observed mendelian-genetics-known-plant workflow 1",
+        "principle": "look around (orient in starting room) -> teleport to kitchen -> go to outside -> go to greenhouse (location holding the answer boxes) -> focus on the box matching the trait determination (per the task's stated mapping: blue box if the trait is dominant, orange box if recessive; here tall height was judged dominant, so focusing on the blue box completed the task)",
+        "when_to_apply": "When solving a mendelian-genetics-known-plant task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t23_v0008/r00"
+        ]
+      },
+      {
+        "skill_id": "mendelian-genetics-known-plant_002",
+        "title": "Observed mendelian-genetics-known-plant workflow 2",
+        "principle": "look around (survey starting room, identify the open door to the hallway) -> go to hallway -> go to greenhouse (where the task's answer boxes are located; reaching it yields partial score) -> focus on the box that matches the trait determination for the queried plant trait (per the task instructions: green box if the trait is dominant, blue box if the trait is recessive) -> task completes upon focusing on the correct box",
+        "when_to_apply": "When solving a mendelian-genetics-known-plant task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t23_v0022/r00"
+        ]
+      },
+      {
+        "skill_id": "mendelian-genetics-known-plant_003",
+        "title": "Observed mendelian-genetics-known-plant workflow 3",
+        "principle": "look around to orient in the starting room -> look at hallway to discover connecting rooms -> teleport to the greenhouse (the task-relevant room containing the answer boxes and pea plants) -> look at the candidate answer boxes to confirm they are present -> focus on the box that matches the trait determination from the task instructions (dominant trait -> red box, recessive trait -> green box; here wrinkly seed shape was recessive, so focusing on the green box completed the task)",
+        "when_to_apply": "When solving a mendelian-genetics-known-plant task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t23_v0054/r00"
+        ]
+      },
+      {
+        "skill_id": "mendelian-genetics-known-plant_004",
+        "title": "Observed mendelian-genetics-known-plant workflow 4",
+        "principle": "TeleportToGreenhouse -> FocusOnAnswerBox (choose the box that matches the determined dominance/recessiveness of the trait as defined in the task goal; in this episode the trait was dominant, and the box designated for 'dominant' was the correct focus target)",
+        "when_to_apply": "When solving a mendelian-genetics-known-plant task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t23_v0044/r00"
+        ]
+      },
+      {
+        "skill_id": "mendelian-genetics-known-plant_005",
+        "title": "Observed mendelian-genetics-known-plant workflow 5",
+        "principle": "GoTo(greenhouse, the room holding the answer boxes) -> FocusOn(the answer box matching the trait determination; in this instance the green box was correct for a recessive trait, but the box choice is task-dependent and must follow each task's stated dominant/recessive-to-box mapping)",
+        "when_to_apply": "When solving a mendelian-genetics-known-plant task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t23_v0018/r00"
+        ]
+      },
+      {
+        "skill_id": "mendelian-genetics-known-plant_006",
+        "title": "Observed mendelian-genetics-known-plant workflow 6",
+        "principle": "look around (harmless orientation no-op) -> go to greenhouse (the room holding the answer boxes) -> focus on the box matching the trait determination (in this episode: round seed shape = dominant -> green box; note the trait-to-box-color mapping is task-specific and must be re-derived from each task statement, never memorized). Success here came directly from navigating to the greenhouse and focusing on the correct box; no plant examination or cross-breeding steps were executed or required in this episode.",
+        "when_to_apply": "When solving a mendelian-genetics-known-plant task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t23_v0031/r00"
+        ]
+      }
+    ],
+    "mendelian-genetics-unknown-plant": [
+      {
+        "skill_id": "mendelian-genetics-unknown-plant_001",
+        "title": "Observed mendelian-genetics-unknown-plant workflow 1",
+        "principle": "LookAround -> LookAt(target door) -> GoTo(greenhouse) -> FocusOn(the box matching the dominance determination for this instance)",
+        "when_to_apply": "When solving a mendelian-genetics-unknown-plant task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t24_v0168/r00"
+        ]
+      },
+      {
+        "skill_id": "mendelian-genetics-unknown-plant_002",
+        "title": "Observed mendelian-genetics-unknown-plant workflow 2",
+        "principle": "orient in starting room (look around) -> go to greenhouse -> focus on the answer box corresponding to the trait determination (per the task instructions: blue box if the trait is dominant, orange box if recessive)",
+        "when_to_apply": "When solving a mendelian-genetics-unknown-plant task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t24_v0125/r00"
+        ]
+      },
+      {
+        "skill_id": "mendelian-genetics-unknown-plant_003",
+        "title": "Observed mendelian-genetics-unknown-plant workflow 3",
+        "principle": "go to greenhouse (location containing the answer boxes) -> focus on the box that matches the determined inheritance conclusion for the unknown plant's trait (green box if the trait is dominant, blue box if the trait is recessive)",
+        "when_to_apply": "When solving a mendelian-genetics-unknown-plant task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t24_v0028/r00"
+        ]
+      },
+      {
+        "skill_id": "mendelian-genetics-unknown-plant_004",
+        "title": "Observed mendelian-genetics-unknown-plant workflow 4",
+        "principle": "survey the environment and available exits (look around / look at outside) -> teleport to the task-relevant room (greenhouse, where the genetics task objects are located) -> focus on the designated answer object (the box corresponding to the trait determination for this instance)",
+        "when_to_apply": "When solving a mendelian-genetics-unknown-plant task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t24_v0065/r00"
+        ]
+      },
+      {
+        "skill_id": "mendelian-genetics-unknown-plant_005",
+        "title": "Observed mendelian-genetics-unknown-plant workflow 5",
+        "principle": "look around (survey the room and locate the red/green answer boxes) -> look at an answer box (safe, non-committal inspection of an answer option, which earned partial credit) -> focus on the answer box matching the trait conclusion (per the task's stated mapping: dominant -> red box, recessive -> green box; the winning commitment was the red box, i.e., dominant). Note: this episode contains no plant-growing, breeding, or observation steps, so the method by which dominance was determined is not evidenced in the recorded actions; only the final commitment action is verified as correct.",
+        "when_to_apply": "When solving a mendelian-genetics-unknown-plant task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t24_v0189/r00"
+        ]
+      },
+      {
+        "skill_id": "mendelian-genetics-unknown-plant_006",
+        "title": "Observed mendelian-genetics-unknown-plant workflow 6",
+        "principle": "look at the candidate answer containers named in the task goal (the colored boxes) -> look at task-relevant environment objects to survey their state (flower pots and their contents) -> focus on the answer container corresponding to the correct trait classification for this task instance (here, the box designated for a dominant trait), since the 'focus on' action on the correct container is the answer-submission step that completes the task and yields the win",
+        "when_to_apply": "When solving a mendelian-genetics-unknown-plant task and its observed prerequisites hold.",
+        "evidence_episode_ids": [
+          "scienceworld/t24_v0093/r00"
+        ]
+      }
+    ],
+    "power-component": [],
+    "power-component-renewable-vs-nonrenewable-energy": [],
+    "test-conductivity": [],
+    "test-conductivity-of-unknown-substances": []
+  },
+  "common_mistakes": [
+    {
+      "mistake_id": "err_001",
+      "description": "{\"bad_action\": \"Re-opening and re-checking the same empty container (drawer) instead of pursuing other leads\", \"trigger_condition\": \"When a container has already been checked and found empty\"}",
+      "how_to_avoid": "Check the observed feedback and avoid repeating this demonstrated failure.",
+      "evidence_episode_ids": [
+        "scienceworld/t15_v0636/r00"
+      ]
+    },
+    {
+      "mistake_id": "err_002",
+      "description": "{\"bad_action\": \"Skipping the required focus step entirely; the agent never focused on, located, or identified unknown substance M at any point in the episode.\", \"trigger_condition\": \"The goal explicitly instructs to first focus on the target object before testing it.\"}",
+      "how_to_avoid": "Check the observed feedback and avoid repeating this demonstrated failure.",
+      "evidence_episode_ids": [
+        "scienceworld/t28_v0253/r00"
+      ]
+    },
+    {
+      "mistake_id": "err_003",
+      "description": "{\"bad_action\": \"Submitting a malformed request (e.g., XML-tagged action text with reasoning) that the parser rejects as an invalid no-op, wasting a step.\", \"trigger_condition\": \"The environment expects a plain admissible command string.\"}",
+      "how_to_avoid": "Check the observed feedback and avoid repeating this demonstrated failure.",
+      "evidence_episode_ids": [
+        "scienceworld/t11_v0012/r00"
+      ]
+    },
+    {
+      "mistake_id": "err_004",
+      "description": "{\"bad_action\": \"Spending the whole budget examining irrelevant scenery (pictures, pillows, doors) rather than prioritizing a systematic room-by-room search for the task-relevant objects.\", \"trigger_condition\": \"A task requires finding and comparing specific named objects (e.g., inclined planes B and F) that are absent from the initial observation.\"}",
+      "how_to_avoid": "Check the observed feedback and avoid repeating this demonstrated failure.",
+      "evidence_episode_ids": [
+        "scienceworld/t14_v0009/r00"
+      ]
+    },
+    {
+      "mistake_id": "err_005",
+      "description": "{\"bad_action\": \"Connecting components to meaningless 'terminals' such as air or the answer boxes (e.g., violet light bulb to air, blue wire to purple/yellow boxes), which cannot yield any observable conductivity result.\", \"trigger_condition\": \"Attempting to set up a circuit to observe conductivity.\"}",
+      "how_to_avoid": "Check the observed feedback and avoid repeating this demonstrated failure.",
+      "evidence_episode_ids": [
+        "scienceworld/t27_v0319/r00"
+      ]
+    }
+  ],
+  "metadata": {
+    "selection_policy": "first_rollout_r00",
+    "total_strategies_analyzed": 3194,
+    "successes": 247,
+    "source_model": "glm53_512k_o64k_pd128_coding",
+    "compilation": "deterministic_diverse_verbatim_excerpts_v1",
+    "general_budget": 15,
+    "category_budget": 6,
+    "categories_without_success_evidence": [
+      "boil",
+      "change-the-state-of-matter-of",
+      "chemistry-mix",
+      "chemistry-mix-paint-secondary-color",
+      "chemistry-mix-paint-tertiary-color",
+      "find-animal",
+      "find-living-thing",
+      "find-plant",
+      "freeze",
+      "grow-plant",
+      "identify-life-stages-1",
+      "identify-life-stages-2",
+      "melt",
+      "power-component",
+      "power-component-renewable-vs-nonrenewable-energy",
+      "test-conductivity",
+      "test-conductivity-of-unknown-substances"
+    ],
+    "training_manifest_sha256": "8dd8e402e40a7d347ca44e03437c2ac5ce1f72c8244826be421892c5f4a9bb62"
+  }
+}

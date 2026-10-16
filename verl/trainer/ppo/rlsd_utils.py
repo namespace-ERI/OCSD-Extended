@@ -83,6 +83,12 @@ class SkillProvider:
                 break
         return self._get_skill_text(matched_task)
 
+    def get_privileged_info_from_task_type(self, task_type: str) -> str:
+        """Exact native category lookup; unknown types receive general skills only."""
+        if self.skill_all:
+            return self._all_skills_text
+        return self._get_skill_text(str(task_type))
+
     def get_privileged_info_from_prompt(self, prompt_text: str) -> str:
         """Infer task type from prompt text using keyword rules from skill_mapping.json.
 

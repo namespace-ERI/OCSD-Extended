@@ -129,6 +129,11 @@ outputs
 
 # appworld
 data/
+!data/
+data/*
+!data/new_benchmarks/
+!data/new_benchmarks/*.json
+.secrets/
 .tmp
 *ports
 

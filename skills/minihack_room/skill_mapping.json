@@ -1,0 +1,10 @@
+{
+  "skill_files": {
+    "general_skills": "general_skills.md",
+    "room_navigation": "room_navigation.md"
+  },
+  "task_to_skill": {
+    "room_navigation": "room_navigation"
+  },
+  "task_keywords": {}
+}

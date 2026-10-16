@@ -1,0 +1,5 @@
+# Install in the OCSD training environment after its existing environment.yml.
+# Keep OCSD's gymnasium0.29.1 for compatibility with its original environments.
+# Install the two native MiniHack packages separately with --no-deps (see README).
+scienceworld==1.2.3
+pyarrow>=15

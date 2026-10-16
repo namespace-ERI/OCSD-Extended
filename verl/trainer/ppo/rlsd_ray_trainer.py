@@ -91,7 +91,10 @@ def build_teacher_batch(
         # Get privileged skill info based on gamefile, data_source, or prompt text
         gamefile = batch.non_tensor_batch.get("gamefile", None)
         data_source = batch.non_tensor_batch.get("data_source", None)
-        if gamefile is not None:
+        task_types = batch.non_tensor_batch.get('task_type')
+        if task_types is not None:
+            skill_text = skill_provider.get_privileged_info_from_task_type(str(task_types[i]))
+        elif gamefile is not None:
             gf = gamefile[i] if isinstance(gamefile[i], str) else str(gamefile[i])
             skill_text = skill_provider.get_privileged_info(gf)
         elif data_source is not None:

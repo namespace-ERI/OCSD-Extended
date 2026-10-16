@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-16",
+  "upstream_commit": "7cfdf110d05d2a745166a9162d3c9222f85117d6",
+  "unit_integration": {
+    "passed": true,
+    "tests": 5,
+    "hydra_method_environment_combinations": 28
+  },
+  "native_smoke": {
+    "minihack_room": {
+      "deterministic_reset": true,
+      "invalid_noop": true,
+      "real_success": true,
+      "terminal_replay_no_duplicate_reward": true
+    },
+    "scienceworld": {
+      "real_reset_and_step": true,
+      "native_task_type": "measure-melting-point-unknown-substance",
+      "invalid_noop": true,
+      "score_delta_reward": true
+    }
+  },
+  "ray_factory_smoke": {
+    "minihack_room": {
+      "factory": true,
+      "grouped_native_workers": 2,
+      "identical_group_reset": true,
+      "real_step": true,
+      "heldout_reset": true
+    },
+    "scienceworld": {
+      "factory": true,
+      "grouped_native_workers": 2,
+      "identical_group_reset": true,
+      "real_step": true,
+      "heldout_reset": true
+    }
+  },
+  "scripted_policy_pipeline": {
+    "minihack_room": {
+      "native_slots": 2,
+      "turn_samples": 6,
+      "task_type": "room_navigation",
+      "future_lengths": [
+        0,
+        1,
+        2
+      ],
+      "teacher_skill_prefix_retained": true,
+      "teacher_response_tokens_unchanged": true
+    },
+    "scienceworld": {
+      "native_slots": 2,
+      "turn_samples": 6,
+      "task_type": "measure-melting-point-unknown-substance",
+      "future_lengths": [
+        0,
+        1,
+        2
+      ],
+      "teacher_skill_prefix_retained": true,
+      "teacher_response_tokens_unchanged": true
+    }
+  },
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.8.0+cu128",
+    "ray": "2.50.0",
+    "gymnasium": "0.29.1",
+    "numpy": "2.2.6"
+  },
+  "gpu_model_forward_tested": false,
+  "optimizer_step_tested": false,
+  "full_training_tested": false,
+  "files": {
+    "data/new_benchmarks/minihack_room.json": "46a6483d0423e8a88df747e350b796ecbb9d8d0a44d6c2e25493987c0b089643",
+    "data/new_benchmarks/scienceworld.json": "93526bb2ab0c80a9781c4fa567a8e32cd2458c73d59230a038da6a3d83570b25",
+    "skills/minihack_room/claude_style_skills.json": "531af9a1aad30384907981734535e076891c528c9919532cdb6e316db37a28c0",
+    "skills/minihack_room/general_skills.md": "039a4ee030a739890a0a0b8406257cb51c4b7c47e0f85ea1d8fa8f4a3a48242e",
+    "skills/minihack_room/evidence.jsonl": "5e9f1d09109beea5b2e1a755d131b89be85274c3e76f769abd3281f4cd5ea9f3",
+    "skills/minihack_room/skill_mapping.json": "8768749789df76801e1fb2f09b988345126059bacde41f06c11d9fd1c00a87af",
+    "skills/minihack_room/room_navigation.md": "dc86efcc3ac19e114163e5d838f765233c37d1f7616fd5522fd2283808598ea7",
+    "skills/scienceworld/inclined-plane-determine-angle.md": "84b1757f008c857f8f3cd3b58f25eae2b058e91016a6ee1c3649abe4a96c6784",
+    "skills/scienceworld/measure-melting-point-known-substance.md": "66c37291ef286bb2954239babbaf76676f0d1fe6b410c9a82ebf0e492b776863",
+    "skills/scienceworld/find-living-thing.md": "6062e450fc93530d1c523cd269593ca5ce69d0d999344b313fb45a7365c7dadb",
+    "skills/scienceworld/measure-melting-point-unknown-substance.md": "29fa4ccddaa71a26de018bf2e64478fa253c09b2dd63fba9c432830485028bb1",
+    "skills/scienceworld/grow-plant.md": "b24b9ccb782460e1c0977b9f97c864e3f42574563f3ea26a73863025a9589705",
+    "skills/scienceworld/identify-life-stages-2.md": "0f5f05c69dc206afe3278dc053ed466408944049cec77ada08de8e28bf10900b",
+    "skills/scienceworld/claude_style_skills.json": "d8b4c770736520a6a7f0e021e18f9e0e297f7a2cb629ea10413f62a40f2e2d65",
+    "skills/scienceworld/find-animal.md": "5e716220c4d9ced2bcf53a1a791c5c98468f3f29e91836e51e183f9e82a943f5",
+    "skills/scienceworld/chemistry-mix-paint-tertiary-color.md": "bafb4a59bdc865ebe503d7f0d29d8d0fdb94a0e4762801dcdad3ceeed0641771",
+    "skills/scienceworld/power-component.md": "319758d71822203aae35a5d6c05e54db3106fa73130a80dff911903fcd64a527",
+    "skills/scienceworld/general_skills.md": "f935216e80d3513ac8cefc7017325c291b03639e2bfb70d402c814fd342062b2",
+    "skills/scienceworld/lifespan-shortest-lived.md": "522a724ad60409ce22538431f6c9d3242a89119b6a8544aca6e209e63aace708",
+    "skills/scienceworld/test-conductivity-of-unknown-substances.md": "24420766c6489463481ae28514ffe5b579fad8241325d025841da18f9c857a4a",
+    "skills/scienceworld/evidence.jsonl": "9deb7266091089129090e29a095db6ffa14dadeb93962ed7c139043036909997",
+    "skills/scienceworld/skill_mapping.json": "f3ef8ab3987c497e205708495e0930c84d068435ad5bc5153886ca237ceffc60",
+    "skills/scienceworld/mendelian-genetics-known-plant.md": "94aed0395051596d63102c9f203ca07f10b7c81ea3f27c1da9f43876b8f7bc00",
+    "skills/scienceworld/find-non-living-thing.md": "b7c06c4a359f6e7aca374b37a4adf5d3f55ef02160dcfa3ced360b6d333b59e9",
+    "skills/scienceworld/lifespan-longest-lived-then-shortest-lived.md": "bcded545785a6e28580bf113d411e11f8cff1cab4d9583202274cc495a018927",
+    "skills/scienceworld/freeze.md": "42cf0feafed458dc21463330126dc9c7b67b4e907a4ab849f94cc088e06072d0",
+    "skills/scienceworld/chemistry-mix.md": "1bfe4244c66f4561feb7bc9c237349c899a91ffaf3efe25b6e1da576fb1b55b6",
+    "skills/scienceworld/chemistry-mix-paint-secondary-color.md": "cb85b9f0c52c85ca951a2183fb89f7d8ef3c8812b84b9e8458c45aae34e2f4d4",
+    "skills/scienceworld/mendelian-genetics-unknown-plant.md": "0ec5ed97124f3f332bc2693cc28add2c0caf1905ef94fff339fdacbc2a578e01",
+    "skills/scienceworld/inclined-plane-friction-named-surfaces.md": "ca0fb7d2fad0a8a5811eedfe9b8f74e8fec163980056d922a32b05c2de03e93b",
+    "skills/scienceworld/find-plant.md": "75a6d79b4d4bcc4e739633d0df24b2c41637dc91d3982fc46300d715cc478dd7",
+    "skills/scienceworld/change-the-state-of-matter-of.md": "5677459dd8345ff4fb763caf80b06ed6f87dd7a08832f31642d359d4b6bb094e",
+    "skills/scienceworld/boil.md": "9984299992cce28602f6c689e5110ee92529101aa4a5378123c4e0e154645a9c",
+    "skills/scienceworld/melt.md": "5b495c1e1ea2473a4470df8d87553b86db2ce288748c31e1c2423b419e4b844d",
+    "skills/scienceworld/identify-life-stages-1.md": "8007d3dfe5780aaf44eb2402dc1bebf7bb32418cd35ae902b9d5df60249563b3",
+    "skills/scienceworld/grow-fruit.md": "d95e5f4f4be97b9d84e78288761e6e5e4635f763e9ef29ff8f8684d4adb9b22e",
+    "skills/scienceworld/power-component-renewable-vs-nonrenewable-energy.md": "92e65f448338322b13abc68206eb0333ef11f839cebb82c9cfc4dcb68d57987e",
+    "skills/scienceworld/inclined-plane-friction-unnamed-surfaces.md": "06032aace17ec27c7508f27f6427ada50cf4d943e8bbe9a76f389a304acdc11e",
+    "skills/scienceworld/lifespan-longest-lived.md": "e35ae6edab3d54d772034ace068010865293c530c189bce4ba6b4d4ad76938b5",
+    "skills/scienceworld/test-conductivity.md": "6bbf837e75df602f5bd92003eb8b1adf377610754cb09bac8cde56728fe505e7"
+  }
+}
