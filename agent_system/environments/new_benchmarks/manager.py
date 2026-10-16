@@ -70,7 +70,11 @@ class NewBenchmarkManager(EnvironmentManagerBase):
                 valid[i] = bool(valid[i] and canonical)
                 actions[i] = canonical if valid[i] else ''
         obs, rewards, dones, infos = self.envs.step(actions)
-        self.memory.store({'text_obs': self.last_obs, 'action': actions})
+        history_actions = actions
+        if self.kind == 'minihack_room':
+            names = ['north', 'east', 'south', 'west', 'northeast', 'southeast', 'southwest', 'northwest']
+            history_actions = [names[a] if 0 <= a < len(names) else 'invalid (no-op)' for a in actions]
+        self.memory.store({'text_obs': self.last_obs, 'action': history_actions})
         self.last_obs, self.last_infos = list(obs), list(infos)
         return self._observations(obs), np.asarray(rewards, dtype=np.float32), np.asarray(dones, dtype=bool), self._infos(infos, valid)
 

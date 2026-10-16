@@ -39,6 +39,8 @@ def main():
                 action = '<reason>check</reason><answer>north</answer>' if kind == 'minihack_room' else '<reason>check</reason><action>look around</action>'
                 _, rewards, done, infos = train.step([action] * 2)
                 assert len(rewards) == 2 and all(i['is_action_valid'] for i in infos)
+                if kind == 'minihack_room':
+                    assert train.memory[0][-1]['action'] == 'north'
                 dev_obs, _ = dev.reset([identity('dev')])
                 assert len(dev_obs['text']) == 1
                 reports[kind] = {'factory': True, 'grouped_native_workers': 2, 'identical_group_reset': True,

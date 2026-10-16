@@ -113,5 +113,12 @@
     "skills/scienceworld/inclined-plane-friction-unnamed-surfaces.md": "06032aace17ec27c7508f27f6427ada50cf4d943e8bbe9a76f389a304acdc11e",
     "skills/scienceworld/lifespan-longest-lived.md": "e35ae6edab3d54d772034ace068010865293c530c189bce4ba6b4d4ad76938b5",
     "skills/scienceworld/test-conductivity.md": "6bbf837e75df602f5bd92003eb8b1adf377610754cb09bac8cde56728fe505e7"
+  },
+  "minihack_history_uses_direction_names": true,
+  "integration_source_hashes": {
+    "agent_system/environments/new_benchmarks/manager.py": "d30b424f8684b1b8292b5b2158cfd3e464d618d5b50cc8123f71d38837833f58",
+    "scripts/new_benchmarks/smoke_ray.py": "8800910a6c5002ccec56bf43dfaf57253837af1314bd9765d484acdec2abcf76",
+    "scripts/new_benchmarks/smoke_pipeline.py": "3f3bafc23ce5bf4ec2528761d8377f2b88a8bd75fd50746091586be1ff1db0c6",
+    "scripts/new_benchmarks/train.py": "d1bb0eee17b36e7393d87d43803f792acfd7b04d1c5ea2e04d154bc4c7e4f36e"
   }
 }
